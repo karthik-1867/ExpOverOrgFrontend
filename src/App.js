@@ -5,6 +5,7 @@ import Home from "./pages/home/Home";
 import "../src/Scrollbaar.css"
 import SavePost from "./pages/savepost/SavePost";
 import { useState } from "react";
+import ExpertTrack from "./pages/expertTrack/ExpertTrack";
 
 function App() {
   const [page,setPage] = useState('home');
@@ -19,6 +20,8 @@ function App() {
             <div className="MainContainer">
                 {page == 'home' && <Home/>}
                 {page == 'save' && <SavePost/>}
+                {page == 'expertTrack' && <ExpertTrack/>}
+                
             </div>
         </div>
     </div>

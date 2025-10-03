@@ -30,8 +30,8 @@ export default function Menu({page}) {
                 Save post
             </li>
             <hr className='Horiline'/>
-            <div className='MenuSocial'>Social</div>
-                        <li className='MenuItem'>
+            <div className='MenuSocial' >Social</div>
+                        <li className='MenuItem' onClick={()=>page('expertTrack')}>
                 <ContactPageOutlinedIcon/>
                 Track expert
             </li>

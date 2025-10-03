@@ -1,0 +1,133 @@
+.expertTrackContainer{
+    display: flex;
+    gap: 10px;
+}
+
+.expertTrackcontainerLeft{
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.expertTrackContainerRight{
+    flex : 7;
+} 
+
+.expertTrackContainerLeftButton,.expertTrackContainerRightButton{
+    padding: 10px;
+    background-color: white;
+    color: darkslategray;
+    width: 50%;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.expertTrackContainerLeftButtons,.expertTrackContainerRightButtons{
+    display: flex;
+    width: 100%;
+}
+
+.expertTrackContainerLeftButtons > .expertTrackContainerLeftButton:not(:last-child) ,.expertTrackContainerRightButtons > .expertTrackContainerRightButton:not(:last-child){
+  border-right: 1px solid orange;
+}
+
+.expertTrackContainerLeftButtons > .expertTrackContainerLeftButton:first-child,.expertTrackContainerRightButtons > .expertTrackContainerRightButton:first-child {
+  /* styles only the first .HomeButton */
+   border-radius: 10px 0 0 10px;
+}
+
+.expertTrackContainerLeftButtons > .expertTrackContainerLeftButton:last-child,.expertTrackContainerRightButtons > .expertTrackContainerRightButton:last-child{
+  /* styles only the first .HomeButton */
+ border-radius: 0px 10px 10px 0px;
+}
+
+.ActiveButton{
+    background-color: orange;
+    color: white;
+    transition: all 0.3s;
+}
+
+
+.expertTrackContainerLists{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: scroll;
+    height: 90vh;
+    
+}
+
+.expertTrackContainerListItem{
+    width: 100%;
+    background-color: #36454f;
+    border-radius: 10px;
+    border: 1px solid orange;
+    padding: 10px;
+     box-sizing: border-box;
+     display: flex;
+     justify-content: space-between;
+}
+
+.expertTrackOwnerDetails{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: white;
+}
+
+.expertTrackOwnerprofileImg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.expertTrackOwnerNameAndDesignation{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.expertTrackOwnerLeftDetails{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap : 10px;
+    width: 40%;
+}
+
+.expertTrackOwnerLeftFollowers,.expertTrackOwnerFollow{
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.expertTrackOwnerLeftFollowers{
+   color: orange;
+   padding: 3px;
+   font-size: 13px;
+   font-weight: bold;
+     font-variation-settings:
+    "wdth" 75;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    line-height: 8px;
+  
+}
+
+.expertTrackOwnerFollow{
+    background-color: red;
+    color: white;
+    padding: 3px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
