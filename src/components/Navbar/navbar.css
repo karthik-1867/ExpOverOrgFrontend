@@ -1,0 +1,81 @@
+.Navbar{
+    background-color: orange;
+    height: 35px;
+    color: rgb(63, 63, 63);
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.NavbarLogo{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 80%;
+    font-weight: bold;
+    font-size: 20px;
+    background-color: white;
+    width: fit-content;
+    padding: 3px;
+    color: orange;
+    border-radius: 3px;
+}
+
+.NavLogoFont{
+    font-style: italic;
+}
+
+.NavbarSearch{
+    display: flex;
+    background-color: darkgoldenrod;
+    align-items: center;
+
+    border: 1px solid white;
+    padding: 3px;
+    width: 30%;
+    color: white;
+    border-radius: 50px;
+    display: flex;
+    gap: 10px;
+    transform: translateX(-50%);
+}
+
+.NavbarSearchPlace{
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.NavbarSearchPlace::placeholder{
+    color: white;
+    font-weight: bold;
+}
+
+.NavbarProfile{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: orange;
+    background-color: #343434;
+    border: 1px solid white;
+    padding: 0 3px;
+    height: 80%;
+    border-radius: 3px;
+}
+
+.NavbarProfileImg{
+    width: 30px;
+    height: 30px;
+    padding: 3px;
+    object-fit: cover;
+    border-radius: 50%;
+
+}
+
+.NavbarDetails{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+}

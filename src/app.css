@@ -1,0 +1,11 @@
+.App{
+    display: flex;
+    min-height: 100vh;
+    background-color: #343434;
+}
+
+.MainContainer{
+    flex: 7;
+    background-color: #343434;
+    margin: 10px;
+}

@@ -1,0 +1,69 @@
+.saveContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.saveContainerTop,.saveContainerBottom{
+    display: flex;
+    align-items: center;
+  
+    gap : 10px;
+    width: 100%;
+}
+
+.saveContainerTopFolderNames{
+   
+    flex: 5;
+}
+
+.saveContainerTopNoOfFiles{
+    
+    flex: 3;
+}
+
+.saveContainerTopFloating{
+     
+    flex: 3;
+}
+
+.saveContainerTopFolderNames,.saveContainerTopNoOfFiles,.saveContainerTopFloating{
+    background-color: orange;
+    color: darkslategray;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+
+.saveContainerBottomFolderNames{
+    background-color: #36454f;
+    color: white;
+    flex: 5;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 500;
+}
+
+.saveContainerBottomFloating{
+     background-color: #36454f;
+      color: white;
+    flex: 3;
+        display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.saveContainerBottomNoOfFiles{
+     background-color: #36454f;
+      color: white;
+    flex: 3;
+
+}
+
+.saveContainerBottomFloating,.saveContainerBottomFolderNames,.saveContainerBottomNoOfFiles{
+    padding: 10px;
+
+    border: 1px solid orange;
+}
