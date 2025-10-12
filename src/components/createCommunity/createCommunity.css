@@ -1,0 +1,16 @@
+.createCommunitySubmit{
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+    color: darkslategray;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.createCommunityContainer{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}

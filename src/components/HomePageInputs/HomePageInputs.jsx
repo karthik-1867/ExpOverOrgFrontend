@@ -36,6 +36,8 @@ export default function HomePageInputs() {
                         </div>
                   </div>
                   <div className="HomeQueryTextInputs">
+                       <div className="HomeQueryTextInputsWrapper">
+                       
                        <label className='HomeQueryShortDesc'>
                           <DescriptionOutlinedIcon/>
                           Short Description
@@ -72,6 +74,8 @@ export default function HomePageInputs() {
                            </button>
                             
                         </div>
+
+                         </div>
                   </div>   
             </div> 
   )

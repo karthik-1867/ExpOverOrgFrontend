@@ -18,15 +18,17 @@
     display: flex;
     align-items: center;
     gap: 3px;
+    color: orange;
     font-size: 13px;
     border-left: 1px solid orange;
     border-radius: 4px;
     font-weight: bold;
+    text-decoration: none;
 }
 .Active{
-    background-color: white;
-    color: darkslategray;
-    transition: all 1s;
+    background-color: orange;
+    color: white;
+    transition: all 0.3s;
 }
 
 .Horiline{

@@ -21,6 +21,7 @@ import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined
 import HomePageInputs from '../../components/HomePageInputs/HomePageInputs';
 import HomePageQuestionSection from '../../components/HomePageQuestionSection/HomePageQuestionSection';
 import HomePageAnsSect from '../../components/HomePageAnsSection/HomePageAnsSect';
+import { NavLink,Outlet } from 'react-router-dom';
 
 const tabs = []
 
@@ -34,30 +35,33 @@ export default function Home() {
     <div className='HomeContainer'>
         <div className="HomeLeftPage">
             <div className="HomeButtons">
-                  <button className={tab == "question" ? "HomeButton ActiveButton" : "HomeButton"} onClick={()=>setTab('question')}>
+                  
+                      <NavLink to="inputs" end className={({ isActive }) => `${isActive ? 'HomeButton ActiveButton' : 'HomeButton'}`}>
                         <HelpRoundedIcon />
                         Post question
-                  </button>
-                  <button className={tab == "all post" ? "HomeButton ActiveButton" : "HomeButton"} onClick={()=>setTab('all post')}>
+                      </NavLink>
+              
+                   <NavLink to="questions" className={({ isActive }) => `${isActive ? 'HomeButton ActiveButton' : 'HomeButton'}`}>
                                     <DynamicFeedOutlinedIcon/>
                         All post
-                  </button>
-                  <button className={tab == "your post" ? "HomeButton ActiveButton" : "HomeButton"} onClick={()=>setTab('your post')}>
+                  </NavLink>
+                  <NavLink to="urQuestions" className={({ isActive }) => `${isActive ? 'HomeButton ActiveButton' : 'HomeButton'}`}>
                        <AllInboxIcon/>
                         Your posts
-                  </button>
-                  <button className={tab == "friends post" ? "HomeButton ActiveButton" : "HomeButton"} onClick={()=>setTab('friends post')}>
+                 </NavLink>
+                   <NavLink to="expertquestions" className={({ isActive }) => `${isActive ? 'HomeButton ActiveButton' : 'HomeButton'}`}>
                         <Diversity2OutlinedIcon/>
                         Friends posts
-                  </button>
-                  <button className={tab == "expert post" ? "HomeButton ActiveButton" : "HomeButton"} onClick={()=>setTab('expert post')}>
+                  </NavLink>
+                 <NavLink to="friendquestions" className={({ isActive }) => `${isActive ? 'HomeButton ActiveButton' : 'HomeButton'}`}>
                         <ContactPageOutlinedIcon/>
                         Expert posts
-                  </button>
+                 </NavLink>
             </div>
-            {tab === 'question' && <HomePageInputs/>}
+            {/* {tab === 'question' && <HomePageInputs/>}
             {tab === 'all post' &&<HomePageQuestionSection/>}
-            <HomePageAnsSect/>
+            <HomePageAnsSect/> */}
+            <Outlet/>
 
             
                  

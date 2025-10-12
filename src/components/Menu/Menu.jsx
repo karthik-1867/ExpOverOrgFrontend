@@ -11,38 +11,52 @@ import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import LogoutIcon from '@mui/icons-material/Logout';
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
 import HistoryOutlinedIcon from '@mui/icons-material/HistoryOutlined';
+import { NavLink } from 'react-router-dom';
 
 export default function Menu({page}) {
   return (
     <div className='MenuContainer'>
         <ul className='MenuItems'>
-                         <div className='MenuSocial'>Post Explore</div>
-            <li className='MenuItem Active' onClick={()=>page('home')}>
-                <PostAddIcon/>
-                All post
-            </li>
-                        <li className='MenuItem' onClick={()=>page('save')}>
-                <DriveFileRenameOutlineOutlinedIcon/>
-                Share expertise
-            </li>
-                        <li className='MenuItem' onClick={()=>page('save')}>
-                <SaveOutlinedIcon/>
-                Save post
-            </li>
+            <div className='MenuSocial'>Post Explore</div>
+           
+                <li >
+                     <NavLink to="/allpost"  className={({ isActive }) => `${isActive ? 'MenuItem Active' : 'MenuItem'}`}>
+                        <PostAddIcon/>
+                        All post
+                    </NavLink>
+                </li>
+                <li >
+                   <NavLink to="/savee"  className={({ isActive }) => `${isActive ? 'MenuItem Active' : 'MenuItem'}`}>
+                        <DriveFileRenameOutlineOutlinedIcon/>
+                        Share expertise
+                    </NavLink>
+                </li>
+                <li >
+                     <NavLink to="/save"  className={({ isActive }) => `${isActive ? 'MenuItem Active' : 'MenuItem'}`}>
+                        <SaveOutlinedIcon/>
+                        Save post
+                      </NavLink>
+                </li>
             <hr className='Horiline'/>
             <div className='MenuSocial' >Social</div>
-                        <li className='MenuItem' onClick={()=>page('expertTrack')}>
-                <ContactPageOutlinedIcon/>
-                Track expert
-            </li>
-                        <li className='MenuItem'>
-                <ConnectWithoutContactOutlinedIcon/>
-                Friends post
-            </li>
-                        <li className='MenuItem'>
-                <ForumIcon/>
-                Community
-            </li>
+                <li >
+                     <NavLink to="/expertTrack"  className={({ isActive }) => `${isActive ? 'MenuItem Active' : 'MenuItem'}`}>
+                        <ContactPageOutlinedIcon/>
+                        Track expert
+                    </NavLink>
+                </li>
+                <li>
+                     <NavLink to="/friendPage"  className={({ isActive }) => `${isActive ? 'MenuItem Active' : 'MenuItem'}`}>
+                        <ConnectWithoutContactOutlinedIcon/>
+                        Friends post
+                      </NavLink>
+                </li>
+                <li>
+                     <NavLink to="/community"  className={({ isActive }) => `${isActive ? 'MenuItem Active' : 'MenuItem'}`}>
+                        <ForumIcon/>
+                        Community
+                     </NavLink>
+                 </li>
             <li className='MenuItem'>
                 <PersonAddAltOutlinedIcon/>
                 Invites

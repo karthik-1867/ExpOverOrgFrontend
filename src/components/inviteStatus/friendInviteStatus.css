@@ -1,0 +1,59 @@
+.friendStatusContainer{
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.friendInviteStatusLeft{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+}
+
+.freindInviteStatusRight{
+    flex: 1;
+        display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.friendInviteStatusLeftButtons,.friendInviteStatusRightButtons{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.friendInviteStatusLeftButton,.friendInviteStatusRightButton{
+    padding: 10px;
+    width: 50%;
+    font-weight: bold;
+    color: darkslategray;
+    background-color: white;
+    border-radius: 10px;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.friendInviteStatusLeftButtons > .friendInviteStatusLeftButton:not(:last-child) ,.friendInviteStatusRightButtons > .friendInviteStatusRightButton:not(:last-child){
+  border-right: 1px solid orange;
+}
+
+.friendInviteStatusLeftButtons > .friendInviteStatusLeftButton:first-child,.friendInviteStatusRightButtons > .friendInviteStatusRightButton:first-child {
+  /* styles only the first .HomeButton */
+   border-radius: 10px 0 0 10px;
+}
+
+.friendInviteStatusLeftButtons > .friendInviteStatusLeftButton:last-child,.friendInviteStatusRightButtons > .friendInviteStatusRightButton:last-child{
+  /* styles only the first .HomeButton */
+ border-radius: 0px 10px 10px 0px;
+}
+
+.ActiveButton{
+    background-color: orange;
+    color: white;
+    transition: all 0.3s;
+}

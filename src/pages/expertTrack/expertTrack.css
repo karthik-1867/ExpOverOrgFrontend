@@ -23,6 +23,7 @@
     display: flex;
     align-items: center;
     gap: 5px;
+    border: none;
 }
 
 .expertTrackContainerLeftButtons,.expertTrackContainerRightButtons{
@@ -86,6 +87,7 @@
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
+    border: 1px solid orange;
 }
 
 .expertTrackOwnerNameAndDesignation{
