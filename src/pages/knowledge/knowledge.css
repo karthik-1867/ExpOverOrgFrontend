@@ -1,0 +1,15 @@
+.KnowledgeContainer{
+    display: flex;
+    gap: 10px;
+    
+}
+
+.knowledgeLeftSide{
+    flex: 2.5;
+}
+
+.knowledgeRightSide{
+    flex: 1;
+    padding: 10px;
+    background-color: black;
+}

@@ -2,11 +2,13 @@
     display: flex;
     gap: 10px;
     box-sizing: border-box;
+    overflow-y: scroll;
 }
 
 .HomeButtons{
     width: 100%;
     display: flex;
+    font-size: 13px;
     
 
 
@@ -17,20 +19,39 @@
 }
 
 
+.HomeRecommendWrapper{
+     flex: 3;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
 
 .HomeRecommended{
     flex: 3;
     height: 100vh;
+    width: 100%;
+}
+
+.FriendsInnerContent{
+    height: 100vh;
+    width: 100%;
 }
 
 .HomeRecommendedHeading{
-    background-color: orange;
+    background-color: #7b35c3;
+    background: linear-gradient(to bottom, #7b35c3, #320060);
+    border: 2px solid #7b35c3;
     border-radius: 10px;
     padding: 10px;
     display: flex;
+    color: white;
     align-items: center;
     gap: 10px;
+    font-size: 13px;
+    font-weight: bold;
 }
 
 .HomeButton{
@@ -69,7 +90,7 @@
 .ActiveButton{
     background-color: orange;
     color: white;
-    transition: all 0.3s;
+
 }
 
 .HomeQuery{
@@ -95,11 +116,12 @@
     align-items: center;
     color: white;
     justify-content: space-between;
-     background-color: #36454f;
+      background: linear-gradient(to bottom, #294c64, #112637);
+    border: 2px solid #294c64;
     font-weight: 500;
     padding: 10px;
     border-radius: 10px;
-    border: 1px solid orange;
+    
 }
 
 .HomeUrFollower{
@@ -119,7 +141,7 @@
 }
 
 .HomeUrFriend{
-            background-color: rgb(128, 0, 0);
+    background-color: rgb(128, 0, 0);
     color: white;
     padding: 1px;
     border-radius: 4px;
@@ -130,6 +152,13 @@
     display: flex;
     align-items: center;
     gap: 5px;
+    background: linear-gradient(to bottom, #294c64, #112637);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 -6px 20px rgba(255, 140, 0, 0.02) inset;
+    backdrop-filter: blur(4px);
+    font-size: 12px;
+    border: 2px solid #294c64;
+    font-variation-settings: "wdth" 70;
+
 }
 
 .HomeQueryNameAndImg{
@@ -162,15 +191,39 @@
     margin-top: 10px;
     display: flex;
     justify-content: center;
-    
+    gap: 10px;
 }
 
 
 .HomeQueryTextInputsWrapper{
     width: 450px;
-    border: 1px solid orange;
+    background: #112939;
+    border: 2px solid #294c64;
     padding: 10px;
     border-radius: 10px;
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.categoryHomeListItems{
+    flex: 1;
+    background-color: #112637;
+     height: 70vh;
+     padding: 10px;
+     display: flex;
+     gap: 10px;
+     flex-direction: column;
+     border: 2px solid #294c64;
+}
+
+.categoryContainerListItems{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -178,9 +231,10 @@
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
-  border: 1px solid orange;
+
   border-radius: 5px;
   background-color: darkslategrey;
+      background: #343434;  
   color: white;
   outline: none;
 
@@ -193,17 +247,23 @@
 }
 
 .HomeQueryShortDesc{
-    padding: 5px;
-    border: 1px solid orange;
+    padding: 10px;
+    
     background-color: orange;
     color: darkblue;
+    /* background: linear-gradient(to bottom, #294c64, #112637); */
+    border: 2px solid #294c64;
+    background-color: #7b35c3;
+    background: linear-gradient(to bottom, #7b35c3, #320060);
+    border: 2px solid #7b35c3;
+    color: white;
     font-size: 13px;
     border-radius: 10px;
-    margin-top: 10px;
+
     display: flex;
     align-items: center;
     gap: 4px;
-    margin-bottom: 10px;
+
     width: 100%;
     font-weight: 500;
     box-sizing: border-box;
@@ -216,16 +276,16 @@
     padding: 10px;
     border: none;
     border-radius: 10px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     margin-bottom: 10px;
     background-color: darkslategrey;
-    border: 1px solid orange;
+    
     color: white;
     outline: none;
 }
 
 .HomeQueryCategoryAndLabel{
-    display: flex;
+    /* display: flex; */
     gap: 10px;
 }
 
@@ -235,7 +295,7 @@
     font-weight: 500;
     padding: 10px;
     border-radius: 10px;
-    border: 1px solid orange;
+    
     color: white;
     display: flex;
     align-items: center;
@@ -259,14 +319,29 @@
 
 
 .HomeRecommendedQuestion{
-    background-color: #36454f;
+    background-color: #294c64;
+    background: linear-gradient(to bottom, #294c64, #112637);
     color: lightskyblue;
     display: flex;
-    border: 1px solid orange;
+    width: 100%;
+    box-sizing: border-box;
     flex-direction: column;
     gap: 10px;
     padding: 10px;
     margin-top: 10px;
+    border-radius: 10px;
+    border: 3px solid #294c64;
+}
+
+.FriendsInnerContentSection{
+        background-color: #36454f;
+    color: lightskyblue;
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
     border-radius: 10px;
 }
 
@@ -276,6 +351,8 @@
     display: flex;
     align-items: center;
     gap: 5px;
+      font-variation-settings:
+    "wdth" 70;
 }
 
 .HomeRecommendedQuestionParaImg{
@@ -297,11 +374,11 @@
 
 .HomeQueryPost{
     
-    background-color: #36454f;
+    background: linear-gradient(to bottom, #294c64, #112637);
     display: flex;
     flex-direction: column;
     border-radius: 10px;
-    border: 1px solid orange;
+    border: 3px solid #294c64;
     padding: 10px;
     color: white;
     margin-bottom: 10px;
@@ -338,6 +415,7 @@
     width: 100%;
     margin-top: 5px;
     margin-bottom: 5px;
+    color: white;
 }
 
 .HomeQueryTopSection{
@@ -348,6 +426,8 @@
 
 .HomeQueryMidSectionRightShortDesc{
     color: skyblue;
+    font-variation-settings:
+    "wdth" 70;
 }
 
 
@@ -373,6 +453,8 @@
 .HomeQueryEndSectionLeft{
     display: flex;
     gap: 20px;
+    font-size: 13px;
+    color: orange;
 }
 
 .HomeQueryEndSectionRight{
@@ -384,17 +466,22 @@
     gap: 5px;
     font-weight: 500;
     color: orange;
+    font-size: 12px;
 }
 
 .HomeQueryEndSectionNumberCard{
-       border: 1px solid orange;
-    color: white;
+      
     background-color: #343434;
+    background: linear-gradient(to bottom, #294c64, #112637);
+    border: 2px solid #294c64;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 -6px 20px rgba(255, 140, 0, 0.02) inset;
+    backdrop-filter: blur(4px);
     padding: 3px;
     border-radius: 10px;
     display: flex;
     align-items: center;
     gap: 5px;
+    font-size: 12px;
 }
 
 
@@ -426,18 +513,19 @@
 
 .HomeQueryAndAnsPost,.HomeAnsPost,.HomeAnsPostComment{
     
-    background-color: #36454f;
+    background-color: #294c64;
+    background: linear-gradient(to bottom, #294c64, #112637);
+    border: 3px solid #294c64;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
-    border: 1px solid skyblue;
     padding: 10px;
     color: white;
 }
 
 .HomeAnsPost,.HomeAnsPostComment{
     border-radius: 0px;
-    border-color: orange;
+
 }
 
 .HomeQueryAnsSection{
@@ -450,6 +538,7 @@
 .HomeQueryMidSectionAns{
     display: flex;
     align-items: center;
+    width: 100%;
     gap: 10px;
     border-left: 4px solid green;
     border-radius: 10px;
@@ -479,8 +568,10 @@
      height: 80%;
      display: flex;
      align-items: center;
-     padding: 10px;
+     justify-content: center;
+     padding: 5px;
      color: darkslategray;
+     font-size: 13px;
     
 }
 
@@ -490,3 +581,18 @@
   text-orientation: sideways-left;
 }
 
+.HomeQueryMidSection{
+    width: 100%;
+}
+
+.HomeQueryMidSectionRight{
+    width: 100%;
+    white-space: pre-line;
+}
+
+
+.HomeQueryMidSectionLeft{
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+}

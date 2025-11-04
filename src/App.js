@@ -13,6 +13,13 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePageInputs from "./components/HomePageInputs/HomePageInputs";
 import HomePageQuestionSection from "./components/HomePageQuestionSection/HomePageQuestionSection";
 import HomePageAnsSect from "./components/HomePageAnsSection/HomePageAnsSect";
+import Login from "./pages/login/Login";
+import ExpertPageAnsSection from "./components/ExpertPageAnsSection/ExpertPageAnsSection";
+import Knowledge from "./pages/knowledge/Knowledge";
+import CommunityInviteStatus from "./components/communityInviteStatus/CommunityInviteStatus";
+import FriendinviteStatus from "./components/inviteStatus/FriendinviteStatus";
+import CreateCommunity from "./components/createCommunity/CreateCommunity";
+import IntroDetails from "./components/IntroDetails/IntroDetails";
 
 function App() {
   const [page,setPage] = useState('home');
@@ -29,20 +36,42 @@ function App() {
              
                  <Routes>
                   
-
-                    <Route path="allpost" element={<Home />}>
+                    <Route path="/" element={<Login/>}/>
+                    <Route path="/allpost" element={<Home />}>
                         <Route index element={<HomePageInputs/> } />        {/* when at /home */}
                         <Route path="inputs" element={<HomePageInputs />} />{/* at /home/profile */}
-                        <Route path="questions" element={<HomePageQuestionSection />} />{/* /home/settings */}
-                        <Route path="urQuestions" element={<HomePageQuestionSection />} />
-                        <Route path="expertquestions" element={<HomePageQuestionSection />} />
-                        <Route path="friendquestions" element={<HomePageQuestionSection />} />
+                        <Route path="questions" element={<HomePageQuestionSection  type='question'/>} />{/* /home/settings */}
+                        <Route path="urQuestions" element={<HomePageQuestionSection type='urQuestions'/>} />
+                        <Route path="expertquestions" element={<HomePageQuestionSection type='expertquestions'/>} />
+                        <Route path="friendquestions" element={<HomePageQuestionSection type='friendquestions'/>} />
                        <Route path="answer/:id" element={<HomePageAnsSect />} />
                   </Route>
                   <Route path="/save" element={<SavePost />} />
-                  <Route path="/expertTrack" element={<ExpertTrack />} />
-                  <Route path="/friendPage" element={<FriendPage />} />
-                  <Route path="/community" element={<Community />} />
+                  <Route path="/expertTrack" element={<ExpertTrack />} >
+                      <Route index path="questions/:id" element={<HomePageQuestionSection  type='questionByExpert'/>} />
+                      <Route path="answer/:id" element={<ExpertPageAnsSection />} />
+                      <Route path="clickedAnswer/:id" element={<HomePageAnsSect type='answerByQuestion'/>} />
+                      <Route path="knowledge/:id" element={<Knowledge type='expertTrack'/>}/> 
+                      <Route path="introDetail/:id" element={<IntroDetails/>}/>
+
+                  </Route>
+                  <Route path="/friendPage" element={<FriendPage />} >
+                      <Route index path="questions/:id" element={<HomePageQuestionSection  type='questionByFriend'/>} />
+                      <Route path="answer/:id" element={<ExpertPageAnsSection />} />
+                      <Route path="clickedAnswer/:id" element={<HomePageAnsSect type='answerByQuestion'/>} />
+                      <Route path="knowledge/:id" element={<Knowledge type='friendPage'/>}/> 
+                      inviteStatus
+                      <Route path="inviteStatus" element={<FriendinviteStatus/>}/> 
+                       <Route path="introDetail/:id" element={<IntroDetails/>}/>
+
+                  </Route>
+                  <Route path="/community" element={<Community />} >
+                       <Route index path="communityKnowledge/:id" element={<Knowledge type='community'/>} />
+                       <Route index path="createCommunity" element={<CreateCommunity/>} />
+                       <Route index path="inviteStatus" element={<FriendinviteStatus/>} />
+                       <Route index path="individualKnowledge/:communityId/:id" element={<Knowledge type='singleUserKnowledge'/>} />
+                        
+                  </Route>
                  </Routes>
               
                

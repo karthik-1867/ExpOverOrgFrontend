@@ -3,9 +3,9 @@ import Groups2OutlinedIcon from '@mui/icons-material/Groups2Outlined';
 import GroupAddOutlinedIcon from '@mui/icons-material/GroupAddOutlined';
 import { useNavigate, useParams } from 'react-router-dom';
 
-export default function ExpertTrackListItems({data,setId,section,api}) {
+export default function CommunityUserList({data,setId,section,api}) {
 
- console.log("dataloogge",data,api,section)
+ console.log("dataloogge",data)
  const navigate = useNavigate();
 
   const handleSelect = () =>{
@@ -17,19 +17,19 @@ export default function ExpertTrackListItems({data,setId,section,api}) {
 
 
   return (
-            <li className='expertTrackContainerListItem' onClick={handleSelect}>
+            <li className='expertTrackContainerListItem'  onClick={handleSelect}>
                   <div className="expertTrackOwnerDetails">
-                    <img src={data?.profilePicture} alt="" className='expertTrackOwnerprofileImg'/>
+                    <img src={data?.communityProfileImg} alt="" className='expertTrackOwnerprofileImg'/>
 
                     <div className="expertTrackOwnerNameAndDesignation">
-                       <span style={{'fontWeight':'bold','fontSize':'17px'}}>{data.name}</span>
-                       <span style={{'fontWeight':'100','fontSize':'12px'}}>Software enginneer</span>
+                       <span style={{'fontWeight':'bold','fontSize':'16px'}} >{data.communityName}</span>
+                       <span style={{'fontWeight':'200','fontSize':'12px'}}>{data.communityDescription}</span>
                     </div>
                   </div>
                   <div className="expertTrackOwnerLeftDetails">
                       <div className="expertTrackOwnerLeftFollowers">
                             <Groups2OutlinedIcon/>
-                            {data.followers}
+                            {data.totalMembers}
                        </div>
                        <div className="expertTrackOwnerFollow">
                             <GroupAddOutlinedIcon/>

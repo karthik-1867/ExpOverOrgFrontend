@@ -12,6 +12,7 @@
 
 .expertTrackContainerRight{
     flex : 7;
+    box-sizing: border-box;
 } 
 
 .expertTrackContainerLeftButton,.expertTrackContainerRightButton{
@@ -24,6 +25,7 @@
     align-items: center;
     gap: 5px;
     border: none;
+    font-size: 13px;
 }
 
 .expertTrackContainerLeftButtons,.expertTrackContainerRightButtons{
@@ -60,15 +62,41 @@
     flex-direction: column;
     gap: 10px;
     overflow-y: scroll;
-    height: 90vh;
-    
+    height: 90vh;  
 }
+
+.categoryListItems{
+     list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: scroll;
+    height: 60vh;  
+}
+
+
+
 
 .expertTrackContainerListItem{
     width: 100%;
-    background-color: #36454f;
+    background-color: #294c64;
+        background: linear-gradient(to bottom, #294c64, #112637);
+    border: 2px solid #294c64;
     border-radius: 10px;
-    border: 1px solid orange;
+    padding: 10px;
+     box-sizing: border-box;
+     display: flex;
+     justify-content: space-between;
+}
+
+.cateorgyListItem{
+    width: 100%;
+    background-color: #294c64;
+        background: linear-gradient(to bottom, #294c64, #112637);
+    border: 2px solid #294c64;
+    border-radius: 10px;
     padding: 10px;
      box-sizing: border-box;
      display: flex;
@@ -82,13 +110,30 @@
     color: white;
 }
 
+.categoryHomeDetailsInternal{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: white;
+    font-size: 13px !important;
+}
+
 .expertTrackOwnerprofileImg{
     width: 40px;
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
-    border: 1px solid orange;
+    
 }
+
+.catgoryImg{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: cover; 
+}
+
+
 
 .expertTrackOwnerNameAndDesignation{
     display: flex;
@@ -115,6 +160,11 @@
    padding: 3px;
    font-size: 13px;
    font-weight: bold;
+   background: linear-gradient(to bottom, #112637, #294c64);
+   border-radius: 10px;
+   border: 2px solid #294c64;
+       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 -6px 20px rgba(255, 140, 0, 0.02) inset;
+    backdrop-filter: blur(4px);
      font-variation-settings:
     "wdth" 75;
     display: flex;
@@ -125,7 +175,8 @@
 }
 
 .expertTrackOwnerFollow{
-    background-color: red;
+    background: linear-gradient(to bottom, red, #742a2a);
+    border: 1px solid red;
     color: white;
     padding: 3px;
     border-radius: 5px;

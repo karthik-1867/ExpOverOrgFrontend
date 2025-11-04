@@ -1,0 +1,62 @@
+.IntroImage{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    flex: 1;
+}
+
+.IntroDetails{
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+.details{
+    display: flex;
+    flex:4;
+    flex-direction: column;
+    background-color: #294c64;
+    background: linear-gradient(to bottom, #294c64, #112637);
+    border: 3px solid #294c64;
+    padding: 10px;
+    gap: 5px;
+    flex-wrap: wrap;
+    height: 180px;
+}
+
+.Detail{
+   
+    
+    font-size: 13px;
+    font-weight: bold;
+
+    box-sizing: border-box;
+    
+}
+
+.singleDetail{
+    background-color: black; 
+    border-radius: 10px;
+    padding: 7px 4px;
+    color: orange;
+    display: flex;
+ width: 45%;
+ border: 2px solid #294c64;
+    justify-content: space-between;
+     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 -6px 20px rgba(255, 140, 0, 0.02) inset;
+    backdrop-filter: blur(4px);
+}
+
+.ExpertiseList{
+     display: flex;
+    flex:2;
+    flex-direction: column;
+    background-color: #294c64;
+    background: linear-gradient(to bottom, #294c64, #112637);
+    border: 3px solid #294c64;
+    padding: 10px;
+}
+
+.IntroDetailsContainer{
+    box-sizing: border-box;
+}

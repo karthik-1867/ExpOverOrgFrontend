@@ -1,0 +1,21 @@
+.CategoryContainer{
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    background-color: #36454f;
+    box-sizing: border-box;
+    gap: 10px;
+}
+
+.CategoryImage{
+    height: 20px;
+    width: 20px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.categoryName{
+    font-size: 13px;
+    font-weight: bold;
+    color: orange;
+}

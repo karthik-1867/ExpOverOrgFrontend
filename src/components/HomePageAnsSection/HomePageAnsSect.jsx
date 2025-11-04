@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
 import EmojiObjectsOutlinedIcon from '@mui/icons-material/EmojiObjectsOutlined';
 import ConnectWithoutContactOutlinedIcon from '@mui/icons-material/ConnectWithoutContactOutlined';
@@ -8,16 +8,40 @@ import QuestionAnswerOutlinedIcon from '@mui/icons-material/QuestionAnswerOutlin
 import TurnedInNotOutlinedIcon from '@mui/icons-material/TurnedInNotOutlined';
 import ArrowDropUpOutlinedIcon from '@mui/icons-material/ArrowDropUpOutlined';
 import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import AnswerList from '../AnswerList/AnswerList';
 export default function HomePageAnsSect() {
-  return (
+      const [ans,setAns] = useState("");
+      const [question,setQuestion] = useState("")
+      const id = useParams();
+      
+      console.log("ans",ans)
+      console.log("question",question)
+      useEffect(()=>{
+            const answer = async() => {
+                  try{
+                       const ans = await axios.get(`${process.env.REACT_APP_URL}/answer/getAnswersByQuestionId/${id.id}`,{withCredentials:true})
+                       setAns(ans.data)
+                       setQuestion(ans.data[0].questionId)
+                  }catch(e){
+                       console.log(e)
+                  }
+            }
+
+            answer();
+      },[id])
+ 
+ 
+      return (
                      <div className="HomeQueryAndAns">
                        
                         <div className="HomeQueryAndAnsPost">
                               <div className="HomeQueryTopSection">
                                     <div className="HomeQueryTopSectionProfileAndImg">
-                                    <img src="https://www.tracyvets.com/files/Parakeets.jpeg" alt="" className='HomeQueryTopSectionImg'/>
+                                    <img src={question.QuestionProfileImg} alt="" className='HomeQueryTopSectionImg'/>
                                     <div className="HomeQueryTopSectionProfileDetail">
-                                    Heroko
+                                     {question.profileName}
                                     <span className='HomeQueryTopSectionProfileDesignation'>Software Architect&bull;Posted 5min ago</span>
                                     </div>
                                     </div>
@@ -25,15 +49,15 @@ export default function HomePageAnsSect() {
 
                                           <div className="HomeUrFollower">
                                                 <GroupOutlinedIcon/>
-                                                Follower : 3320
+                                                Follower : {question.followers}
                                           </div>
                                           <div className="HomeUrContribution">
                                                 <EmojiObjectsOutlinedIcon/>
-                                                Solution contributed : 240
+                                                Solution contributed : {question.solutionsContributed}
                                           </div>
                                           <div className="HomeUrFriend">
                                                 <ConnectWithoutContactOutlinedIcon/>
-                                                Friend : 300
+                                                Friend : {question.friends}
                                           </div>
                               </div>
                                     
@@ -44,17 +68,9 @@ export default function HomePageAnsSect() {
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="" className='HomeQueryMidSectionLogo'/>
                                     </div>
                                     <div className="HomeQueryMidSectionRight">
-                                          <p className='HomeQueryMidSectionRightShortDesc'>Q How to resolve cors issue</p>
+                                          <p className='HomeQueryMidSectionRightShortDesc'>Q {question.QuestionTitle}</p>
                                           <p className="HomeQueryMidSectionRightLongDesc">
-                                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis corporis blanditiis aliquam quia quae, earum doloribus quidem autem ipsa, nesciunt, quas distinctio! Facere ex beatae asperiores 
-                                                
-                                                ipsam cumque, accusamus illum.
-                                                Ex eligendi dolores illum veritatis fuga nihil qui. Eligendi, 
-                                                
-                                                
-                                                eveniet iste! Unde neque quibusdam maiores, tempora quisquam nulla dolore facere commodi molestiae provident ipsam. Hic deleniti at iste aperiam asperiores.
-                                                Quia voluptatem officiis dolorem ipsam blanditiis, porro voluptatibus, ut veritatis ea eveniet provident voluptatum animi repudiandae fuga labore eaque reprehenderit aliquam! Ipsum corrupti suscipit sequi? Pariatur alias ut perferendis dolor.
-                                                Recusandae beatae doloremque, aspernatur dolore accusantium quia enim quas rerum ipsa dolores fugiat eveniet dolor voluptatem, sequi vero? Corporis enim ad necessitatibus esse tempora illo voluptate asperiores harum in officia.
+                                                {question.QuestionBody}
                                           </p>
 
 
@@ -65,11 +81,11 @@ export default function HomePageAnsSect() {
                                                 <div className="HomeQueryEndSectionLeft">
                                                       <div className="HomeQueryEndSectionNumberCard">
                                                             <SwipeRightOutlinedIcon/>
-                                                            Accepted by : 30
+                                                            Accepted by : {question.acceptedBy}
                                                       </div>
                                                       <div className="HomeQueryEndSectionNumberCard">
                                                             <QuestionAnswerOutlinedIcon/>
-                                                            Answered by : 30
+                                                            Answered by : {question.answers}
                                                       </div>
                                                 </div>
                                                 <div className="HomeQueryEndSectionRight">
@@ -83,7 +99,10 @@ export default function HomePageAnsSect() {
                         </div>                     
                         
                         <div className="HomeQueryAnsSection">
-                              <div className="HomeAnsPost">
+                              { ans.length > 0 && ans?.map((item)=>(
+                                    <AnswerList key={item._id} data={item}/>
+                              ))}
+                              {/* <div className="HomeAnsPost">
                                     <div className="HomeQueryTopSection">
                                           <div className="HomeQueryTopSectionProfileAndImg">
                                           <img src="https://www.tracyvets.com/files/Parakeets.jpeg" alt="" className='HomeQueryTopSectionImg'/>
@@ -320,7 +339,7 @@ export default function HomePageAnsSect() {
                                     </div>
 
                               </div> 
-                                                             <div className="HomeAnsPostComment">
+                              <div className="HomeAnsPostComment">
                                     <div className="HomeQueryTopSection">
                                           <div className="HomeQueryTopSectionProfileAndImg">
                                           <img src="https://www.tracyvets.com/files/Parakeets.jpeg" alt="" className='HomeQueryTopSectionImg'/>
@@ -382,7 +401,7 @@ export default function HomePageAnsSect() {
                                           </div>
                                     </div>
 
-                              </div> 
+                              </div>  */}
                         </div>
             </div>
   )

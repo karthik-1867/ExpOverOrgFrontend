@@ -5,15 +5,37 @@ import SwipeRightOutlinedIcon from '@mui/icons-material/SwipeRightOutlined';
 
 import QuestionAnswerOutlinedIcon from '@mui/icons-material/QuestionAnswerOutlined';
 import TurnedInNotOutlinedIcon from '@mui/icons-material/TurnedInNotOutlined';
+import { NavLink } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import CodeEditor from '../CodeEditor/CodeEditor';
 
-export default function HomeQueryPostItems({data}){
+export default function HomeQueryPostItems({data, type}){
+
+    console.log("trypes",type,data)
+
+    const getRoute = () => {
+        switch(type) {
+            case 'questionByExpert':
+                return `/expertTrack/clickedAnswer/${data._id}`;
+            case 'questionByFriend':
+                 return `/friendPage/clickedAnswer/${data._id}`;
+            case 'allpost':
+            default:
+                return `/allpost/answer/${data._id}`;
+        }
+    };
+    
     return(
+            <NavLink to={getRoute()} style={{textDecoration:'none'}}>
+
+       
                                 <div className="HomeQueryPost">
                                       <div className="HomeQueryTopSection">
                                             <div className="HomeQueryTopSectionProfileAndImg">
-                                                <img src={data.profile} alt="" className='HomeQueryTopSectionImg'/>
+                                                <img src={data.userId.profilePicture} alt="" className='HomeQueryTopSectionImg'/>
                                                <div className="HomeQueryTopSectionProfileDetail">
-                                                {data.profileName}
+                                                {data.userId.name}
                                                 <span className='HomeQueryTopSectionProfileDesignation'>Software Architect&bull;Posted 5min ago</span>
                                                </div>
                                             </div>
@@ -21,15 +43,15 @@ export default function HomeQueryPostItems({data}){
         
                                                   <div className="HomeUrFollower">
                                                         <GroupOutlinedIcon/>
-                                                        Follower : {data.Follower}
+                                                        Follower : {data.userId.followers}
                                                   </div>
                                                   <div className="HomeUrContribution">
                                                         <EmojiObjectsOutlinedIcon/>
-                                                        Solution contributed : {data.SolutionContributed}
+                                                        Solution contributed : {data.userId.solutionsPosted}
                                                   </div>
                                                   <div className="HomeUrFriend">
                                                         <ConnectWithoutContactOutlinedIcon/>
-                                                        Friend : {data.Friend}
+                                                        Friend : {data.friends}
                                                   </div>
                                       </div>
                                             
@@ -40,9 +62,10 @@ export default function HomeQueryPostItems({data}){
                                                 <img src={data.QuestionProfileImg} alt="" className='HomeQueryMidSectionLogo'/>
                                             </div>
                                             <div className="HomeQueryMidSectionRight">
-                                                  <p className='HomeQueryMidSectionRightShortDesc'>{data.Question}</p>
+                                                  <p className='HomeQueryMidSectionRightShortDesc'>{data.QuestionTitle}</p>
+                                                  <CodeEditor/>
                                                   <p className="HomeQueryMidSectionRightLongDesc">
-                                                        {data.QuestionFullDesc}
+                                                        {data.QuestionBody}
                                                   </p>
         
         
@@ -53,11 +76,11 @@ export default function HomeQueryPostItems({data}){
                                                         <div className="HomeQueryEndSectionLeft">
                                                               <div className="HomeQueryEndSectionNumberCard">
                                                                     <SwipeRightOutlinedIcon/>
-                                                                    Accepted by : {data.Accepted}
+                                                                    Accepted by : {data.acceptedBy}
                                                               </div>
                                                               <div className="HomeQueryEndSectionNumberCard">
                                                                     <QuestionAnswerOutlinedIcon/>
-                                                                    Answered by : {data.AnsweredBy}
+                                                                    Answered by : {data.answers}
                                                               </div>
                                                         </div>
                                                         <div className="HomeQueryEndSectionRight">
@@ -69,5 +92,6 @@ export default function HomeQueryPostItems({data}){
                                       </div>
         
                                 </div>
+            </NavLink>
     )
 }

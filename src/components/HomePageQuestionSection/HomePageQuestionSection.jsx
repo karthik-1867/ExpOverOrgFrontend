@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
 import EmojiObjectsOutlinedIcon from '@mui/icons-material/EmojiObjectsOutlined';
 import ConnectWithoutContactOutlinedIcon from '@mui/icons-material/ConnectWithoutContactOutlined';
@@ -8,8 +8,46 @@ import QuestionAnswerOutlinedIcon from '@mui/icons-material/QuestionAnswerOutlin
 import TurnedInNotOutlinedIcon from '@mui/icons-material/TurnedInNotOutlined';
 import HomeQueryPostItems from '../HomeQueryPostItems/HomeQueryPostItems';
 import {question} from "../../Dummy.js"
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
-export default function HomePageQuestionSection() {
+export default function HomePageQuestionSection({type}) {
+  const [user,setUser] = useState("");
+  const [questions,setQuestion] = useState([]);
+  const [expertQuestions,setExpertQuestion] = useState();
+
+  const id = useParams();
+
+  console.log('type',type)
+  console.log("12sadasd",questions)
+  console.log("homepageids",id)
+
+  useEffect(()=>{
+      const userDetails = async() => {
+            try{
+               
+                if(type === 'question'){
+                  const user = await axios.get(`${process.env.REACT_APP_URL}/user/getYourDetails`,{withCredentials:true})
+                  setUser(user)
+                  const question = await axios.get(`${process.env.REACT_APP_URL}/question/getQuestions`,{withCredentials:true})
+                  console.log("questiuons",question)
+                  setQuestion(question.data)
+                }
+                else if(type === 'questionByExpert' || type === 'questionByFriend'){
+                   const question = await axios.get(`${process.env.REACT_APP_URL}/question/getQuestionByUserId/${id.id}`,{withCredentials:true})
+                   console.log("questiuons",question)
+                   setQuestion(question.data)
+                }
+
+            }catch(e){
+                console.log(e)
+            }
+      }
+
+      userDetails();
+  },[id])
+
+
   return (
          <div className="HomeQuery">
                   <div className="HomeQueryHeading">
@@ -39,9 +77,9 @@ export default function HomePageQuestionSection() {
                         </div>
                   </div>
                   <div className="HomeQueryPostSection">
-                        {question.map((item)=>(
+                        {questions.length > 0 && questions?.map((item)=>(
 
-                              <HomeQueryPostItems key={item.id} data={item}/>
+                              <HomeQueryPostItems key={item._id} data={item} type={type}/>
                         ))
                         }
                   </div>

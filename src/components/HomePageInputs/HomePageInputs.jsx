@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import DescriptionRoundedIcon from '@mui/icons-material/DescriptionRounded';
 import CategoryRoundedIcon from '@mui/icons-material/CategoryRounded';
@@ -6,7 +6,25 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import EmojiObjectsOutlinedIcon from '@mui/icons-material/EmojiObjectsOutlined';
 import ConnectWithoutContactOutlinedIcon from '@mui/icons-material/ConnectWithoutContactOutlined';
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
+import HomeCategory from '../HomeCategory/HomeCategory';
+import axios from 'axios';
+import CodeEditor from '../CodeEditor/CodeEditor';
 export default function HomePageInputs() {
+
+  const [catgeory,setCategory] = useState("");
+
+
+  useEffect(()=>{
+     
+      const getCategory = async() => {
+            const category = await axios.get(`${process.env.REACT_APP_URL}/category/getAllCategory`,{withCredentials:true})
+            setCategory(category.data);
+      }
+
+      getCategory()
+
+  },[])
+
   return (
              <div className="HomeQuery">
                   <div className="HomeQueryHeading">
@@ -37,7 +55,11 @@ export default function HomePageInputs() {
                   </div>
                   <div className="HomeQueryTextInputs">
                        <div className="HomeQueryTextInputsWrapper">
-                       
+                        <label className='HomeQueryShortDesc'>
+                              <DescriptionOutlinedIcon/>
+                              Code
+                        </label>
+                       <CodeEditor/>
                        <label className='HomeQueryShortDesc'>
                           <DescriptionOutlinedIcon/>
                           Short Description
@@ -56,16 +78,10 @@ export default function HomePageInputs() {
                        <textarea
                         id="myTextarea"
                         class="textbox"
-                        rows="6"
+                        rows="7"
                         cols="30"
                         placeholder="Full Description of problem statement…"
                         ></textarea>
-                        <div className="HomeQueryCategoryAndLabel">  
-                             <label className='HomeQueryShortDesc'>
-                              <CategoryRoundedIcon/>
-                               category</label>
-                               <select name="owner" class="HomeQueryCategory"><option value="Python">Python</option><option value="Java">Java</option><option value="javascript">javascript</option></select>
-                        </div>
                         <div className="HomeQueryInfo">
                            <InfoOutlinedIcon/>
                            If category of question described does'nt exist. U can create ur own category but it would be reviewed first. You can click right button to create
@@ -74,7 +90,22 @@ export default function HomePageInputs() {
                            </button>
                             
                         </div>
+                         <button className='HomeQueryCategoryCreate' style={{background: "linear-gradient(to bottom, #62ff12, #007600)",border: "1px solid #62ff12",color:'white'}}>
+                             Sumbit
+                         </button>
+                        
 
+                         </div>
+                         <div className="categoryHomeListItems">
+                              <label className='HomeQueryShortDesc'>
+                              <DescriptionOutlinedIcon/>
+                              Category options
+                                    </label>
+                                 <ul className='categoryContainerListItems'>
+                                    {catgeory.length>0 && catgeory?.map((item)=>(
+                                          <HomeCategory key={item._id} data={item}/>
+                                    ))}
+                                 </ul>
                          </div>
                   </div>   
             </div> 
