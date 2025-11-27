@@ -1,69 +1,169 @@
 .saveContainer{
     display: flex;
+    gap: 10px;
+}
+
+.saveContainerLeftPanel{
+    flex: 3;
+    padding: 10px;
+     background-color: black;
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+     border-radius: 10px;
+}
+
+.SaveHeadingWrapper{
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, #7b35c3, #320060);
+    border: 2px solid #7b35c3;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.saveRightContainer{
+    flex: 9;
+}
+
+.saveContainerList{
+    height: 90vh;
+}
+
+.saveContainerCreateFolder{
+    background: linear-gradient(rgb(98, 255, 18), rgb(0, 118, 0));
+    border: 1px solid rgb(98, 255, 18);
+    color: white;
+    height: fit-content;
+    padding: 5px;
+    align-self: center;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    justify-content: center;
+    margin-right: 5px;
+}
+
+.saveContainerCreateFolderCancel{
+    background: linear-gradient(to bottom, red, #742a2a);
+    border: 1px solid red;
+    color: white;
+    height: fit-content;
+    padding: 5px;
+    align-self: center;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    justify-content: center;
+    margin-right: 5px;
+}
+
+
+.saveContainerCreateFolderSave{
+    background: linear-gradient(rgb(98, 255, 18), rgb(0, 118, 0));
+    border: 1px solid rgb(98, 255, 18);
+    color: white;
+    height: fit-content;
+    width: 100%;
+    padding: 5px;
+    align-self: center;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    justify-content: center;
+    margin-right: 5px;
+}
+
+
+
+
+
+.saveContainerCreateFolder2{
+     background: linear-gradient(rgb(98, 255, 18), rgb(0, 118, 0));
+    border: 1px solid rgb(98, 255, 18);
+    color: white;
+    width: 100%;
+    height: fit-content;
+    padding: 5px;
+    align-self: center;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    justify-content: center;
+    margin-right: 5px;
+}
+
+
+.saveRightContainer{
+    display: flex;
+    gap:10px
+}
+
+.savedQuestionPost,.saveOpenLink{
+    flex: 1;
+        padding: 10px;
+}
+
+.saveOpenLink,.savedQuestionPost{
+    height: 98vh;
+    width: 100%;
+    background-color: #112637;
+    overflow: hidden;
+}
+
+.savedPostSection{
+    margin-top: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 100vh;
+
+}
+
+.SaveSectionBreadCrumb{
+
+    background: linear-gradient(to bottom, #294c64, #112637);
+    border: 3px solid #294c64;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+    border-radius: 10px;
+}
+
+.SaveSectionContainer{
+    display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.saveContainerTop,.saveContainerBottom{
-    display: flex;
-    align-items: center;
-  
-    gap : 10px;
-    width: 100%;
-}
-
-.saveContainerTopFolderNames{
-   
-    flex: 5;
-}
-
-.saveContainerTopNoOfFiles{
-    
-    flex: 3;
-}
-
-.saveContainerTopFloating{
-     
-    flex: 3;
-}
-
-.saveContainerTopFolderNames,.saveContainerTopNoOfFiles,.saveContainerTopFloating{
-    background-color: orange;
-    color: darkslategray;
-    padding: 10px;
+.breadCrumb{
+        background-color: #7b35c3;
+    background: linear-gradient(to bottom, #7b35c3, #320060);
+    border: 2px solid #7b35c3;
+    width: fit-content;
     border-radius: 10px;
-    font-weight: bold;
-}
-
-
-.saveContainerBottomFolderNames{
-    background-color: #36454f;
-    color: white;
-    flex: 5;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-weight: 500;
-}
-
-.saveContainerBottomFloating{
-     background-color: #36454f;
-      color: white;
-    flex: 3;
-        display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.saveContainerBottomNoOfFiles{
-     background-color: #36454f;
-      color: white;
-    flex: 3;
-
-}
-
-.saveContainerBottomFloating,.saveContainerBottomFolderNames,.saveContainerBottomNoOfFiles{
     padding: 10px;
+    display: flex;
+    color: white;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: bold;
+    flex: 1;
+}
 
-    border: 1px solid orange;
+.hidden{
+    display: none;
 }

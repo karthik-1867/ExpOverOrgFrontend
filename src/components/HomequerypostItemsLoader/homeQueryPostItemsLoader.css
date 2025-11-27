@@ -1,0 +1,112 @@
+.HomeQueryTopSectionImgLoader{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+   background-color: #112637;
+    animation: loaderAnimation 1.5s infinite;   
+}
+
+
+
+.HomeQueryTopSectionNameLoader{
+    width:120px;
+    height:15px;
+
+    border-radius:5px;
+    background-color: #112637;
+    animation: loaderAnimation 1.5s infinite;
+}
+
+.HomeQueryTopSectionProfileDesignationLoader{
+    width:80px;
+    height:12px;
+    border-radius:5px;
+    background-color: #112637;
+    animation: loaderAnimation 1.5s infinite;
+}
+
+.HomeQueryTopSectionProfileAndImg{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.HomeQueryTopSectionNumberLoader{
+    width:30px;
+    height:12px;
+    border-radius:5px;
+   background-color: #112637;
+    animation: loaderAnimation 1.5s infinite;
+
+}
+
+.HomeQueryMidSectionLogoImgLoader{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background-color: #294c64;
+    animation: loaderAnimation 1.5s infinite;
+}
+
+.HomeQueryMidSectionRightShortDescLoader,.HomeQueryMidSectionRightShortDescLoader90,.HomeQueryMidSectionRightShortDescLoader80,.HomeQueryMidSectionRightShortDescLoader85,.HomeQueryMidSectionRightShortDescLoader75{
+    width:80%;
+    height:20px;
+    border-radius:10px;
+    background-color: #112637;
+    animation: loaderAnimation 1.5s infinite;
+}
+
+
+.HomeQueryMidSectionRightLongDescLoader{
+    width:100%;
+    height:200px;
+    margin-top:10px;
+    border-radius:10px;
+    background: #294c64;
+    animation: loaderAnimation 1.5s infinite;
+}
+
+.HomeQueryMidSectionRightShortDescLoader90{
+    width: 90%;
+     background: #294c64;
+}
+
+.HomeQueryMidSectionRightShortDescLoader80{
+    width: 80%;
+     background: #294c64;
+}
+
+.HomeQueryMidSectionRightShortDescLoader85{
+    width: 85%;
+    background: #294c64;
+}
+
+@keyframes loaderAnimation {
+    0% {
+        background-color: #112637;
+        border: 2px solid #294c64;
+    }
+    50% {
+        background-color: #294c64;
+        border: 2px solid #112637;
+    }
+    100% {
+        background-color: #112637;
+        border: 2px solid #294c64;
+    }
+}
+
+@keyframes queryLoader {
+    0% {
+        background: linear-gradient(to bottom, #294c64, #112637);
+        border: 2px solid #294c64;
+    }
+    50% {
+        background: linear-gradient(to bottom, #112637, #294c64);
+        border: 2px solid #112637;
+    }
+    100% {
+        background: linear-gradient(to bottom, #294c64, #112637);
+        border: 2px solid #294c64;
+    }
+}

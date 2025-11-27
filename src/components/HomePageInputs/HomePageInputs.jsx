@@ -12,6 +12,15 @@ import CodeEditor from '../CodeEditor/CodeEditor';
 export default function HomePageInputs() {
 
   const [catgeory,setCategory] = useState("");
+  const [selectedCategory,setSelectedCategory] = useState("");
+  const [inputs,setinputs] = useState({
+      code:"",
+      QuestionTitle:"",
+      QuestionBody:"",
+      QuestionCategory:""
+  })
+
+  console.log("inputs",inputs)
 
 
   useEffect(()=>{
@@ -24,6 +33,40 @@ export default function HomePageInputs() {
       getCategory()
 
   },[])
+
+  const handleSubmit = async(e) => {
+      const {code,QuestionTitle,QuestionBody,QuestionCategory} = inputs;
+        e.preventDefault();
+      
+
+      
+      await axios.post(`${process.env.REACT_APP_URL}/question/postQuestion`,{code,QuestionBody,QuestionCategory,QuestionTitle},{withCredentials:true})
+      setinputs({
+            code:"",
+            QuestionTitle:"", 
+            QuestionBody:"",
+            QuestionCategory:""
+      })
+  }
+
+  const handleInput = (e) => {
+            setinputs((prev)=>{
+                  return {...prev, [e.target.name]:e.target.value}
+            })
+  }
+
+  const handleCategory = (value) => {
+           setSelectedCategory(value._id);
+           setinputs((prev)=>{
+                  return {...prev, QuestionCategory:value.categoryName}
+            })
+  }   
+
+  const handleCodeChange = (value) => {
+            setinputs((prev)=>{
+                  return {...prev, code:value}
+            })
+  }
 
   return (
              <div className="HomeQuery">
@@ -54,12 +97,12 @@ export default function HomePageInputs() {
                         </div>
                   </div>
                   <div className="HomeQueryTextInputs">
-                       <div className="HomeQueryTextInputsWrapper">
+                       <form className="HomeQueryTextInputsWrapper" onSubmit={handleSubmit}>
                         <label className='HomeQueryShortDesc'>
                               <DescriptionOutlinedIcon/>
                               Code
                         </label>
-                       <CodeEditor/>
+                       <CodeEditor value={inputs.code} onChange={handleCodeChange}/>
                        <label className='HomeQueryShortDesc'>
                           <DescriptionOutlinedIcon/>
                           Short Description
@@ -67,9 +110,12 @@ export default function HomePageInputs() {
                        <textarea
                         id="myTextarea"
                         class="textbox"
+                        name='QuestionTitle'
                         rows="1"
                         cols="30"
                         placeholder="Type Short description question…"
+                        value={inputs.QuestionTitle}
+                        onChange={e => handleInput(e)}
                         ></textarea>
                         <label className='HomeQueryShortDesc'>
                               <DescriptionRoundedIcon/>      
@@ -80,7 +126,10 @@ export default function HomePageInputs() {
                         class="textbox"
                         rows="7"
                         cols="30"
+                        name='QuestionBody'  
                         placeholder="Full Description of problem statement…"
+                        value={inputs.QuestionBody}
+                        onChange={e => handleInput(e)}
                         ></textarea>
                         <div className="HomeQueryInfo">
                            <InfoOutlinedIcon/>
@@ -90,12 +139,12 @@ export default function HomePageInputs() {
                            </button>
                             
                         </div>
-                         <button className='HomeQueryCategoryCreate' style={{background: "linear-gradient(to bottom, #62ff12, #007600)",border: "1px solid #62ff12",color:'white'}}>
+                         <button type="submit" className='HomeQueryCategoryCreate' style={{background: "linear-gradient(to bottom, #62ff12, #007600)",border: "1px solid #62ff12",color:'white'}}>
                              Sumbit
                          </button>
                         
 
-                         </div>
+                         </form>
                          <div className="categoryHomeListItems">
                               <label className='HomeQueryShortDesc'>
                               <DescriptionOutlinedIcon/>
@@ -103,7 +152,7 @@ export default function HomePageInputs() {
                                     </label>
                                  <ul className='categoryContainerListItems'>
                                     {catgeory.length>0 && catgeory?.map((item)=>(
-                                          <HomeCategory key={item._id} data={item}/>
+                                          <HomeCategory selectedCategory={selectedCategory} key={item._id} data={item} handleCategory={handleCategory}/>
                                     ))}
                                  </ul>
                          </div>

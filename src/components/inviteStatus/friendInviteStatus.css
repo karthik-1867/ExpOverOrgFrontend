@@ -1,13 +1,13 @@
 .friendStatusContainer{
     display: flex;
     gap: 10px;
-    margin-top: 10px;
+    
     background-color: #36454f;
     padding: 10px;
 }
 
 .friendInviteStatusLeft{
-    flex: 0.7;
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -22,7 +22,7 @@
 }
 
 .freindInviteStatusRight{
-    flex: 1;
+    flex: 1.7;
     display: flex;
     flex-direction: column;
     align-items: center;  /* Center children horizontally */
@@ -34,6 +34,7 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 -6px 20px rgba(255, 140, 0, 0.02) inset;
     backdrop-filter: blur(4px);
     height: fit-content;
+    border: 1px solid white;
 }
 
 .friendInviteStatusLeftButtons,.friendInviteStatusRightButtons{

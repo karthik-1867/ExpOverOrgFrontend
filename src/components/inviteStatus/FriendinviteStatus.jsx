@@ -6,20 +6,27 @@ import PendingActionsOutlinedIcon from '@mui/icons-material/PendingActionsOutlin
 import PersonAddOutlinedIcon from '@mui/icons-material/PersonAddOutlined';
 import FriendsItems from '../friendsItems/FriendsItems';
 import { Users } from '../../Dummy';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import axios from 'axios';
 import HomeQueryPostItems from '../HomeQueryPostItems/HomeQueryPostItems';
 import AnswerList from '../AnswerList/AnswerList';
+import PeopleLoader from '../PeopleLoader/PeopleLoader';
+import Nodata from '../Nodata/Nodata';
+import HomeQueryPostItemsLoader from '../HomequerypostItemsLoader/HomeQueryPostItemsLoader';
 
 export default function FriendinviteStatus() {
+    const { handleUpdate } = useOutletContext();
     const [type,SetType] = useState('AllUser');
     const [tab,setTab] = useState('question');
      const [question,setQuestion] = useState('');
     const [answer,setAnswer] = useState('');
+    
     const [knowledge,setKnowledge] = useState('');
     const [alluser,setAllUser] = useState([]);
     const [id,setId] = useState(0); 
     const [detail,setDetail] = useState('');
+    const [loading,setLoading] = useState(false);
+    const arr = Array(10).fill().map((_, i) => i);
 
      console.log("pending invite",detail)
         const handleTab = async(tab) => {
@@ -35,10 +42,13 @@ export default function FriendinviteStatus() {
               }
         }
 
-     useEffect(()=>{
-         const getUser = async() => {
+
+        const getUser = async() => {
              try{
-   
+
+                setLoading(true);
+                setAllUser([])
+                setQuestion([])                
                   if(type === 'AllUser'){
                        const user = await axios.get(`${process.env.REACT_APP_URL}/friends/invitePendingList`,{withCredentials:true})
                        console.log("usereee",user);
@@ -60,11 +70,16 @@ export default function FriendinviteStatus() {
                        setId(allFriends[0]._id)
                       
                   }
+                  
               
              }catch(e){
                   console.log(e);
              }
+
+             setLoading(false);
          }
+     useEffect(()=>{
+
          getUser()
         },[type])
 
@@ -74,6 +89,7 @@ export default function FriendinviteStatus() {
 
                     const userDetail = alluser.filter((i)=>i._id===id)[0];
                     setDetail(userDetail)
+                    setLoading(true);
 
                     if(tab === 'question'){
                         const question = await axios.get(`${process.env.REACT_APP_URL}/question/getTop5Question/${id}`,{withCredentials:true})
@@ -84,12 +100,20 @@ export default function FriendinviteStatus() {
                     }else{
     
                     }
+                    setLoading(false);
                 }
             }
 
             data();
         },[id])
 
+
+        const handleAccept = async() => {
+            console.log("accpept id",id)
+             await axios.put(`${process.env.REACT_APP_URL}/friends/acceptInvite/${id}`,{},{withCredentials:true})
+             getUser()
+             handleUpdate()
+        }
 
         console.log("alluserlog",alluser)
 
@@ -108,14 +132,28 @@ export default function FriendinviteStatus() {
             </div>
 
             <ul className='expertTrackContainerLists'>
-                {alluser.map((user)=>(
-                    <FriendsItems key={user.id} data={user} setId={setId}/>
+                {alluser.length>0 && alluser.map((user)=>(
+                    <FriendsItems key={user.id} data={user} setId={setId} type={type} handleAccept={handleAccept}/>
                 ))}
+                {
+                    (alluser.length==0 && loading==true) &&
+                    
+                    arr.map((i)=>
+                    (<PeopleLoader type={type}/>)
+                    )   
+                }
+                {
+                 alluser.length==0 && <Nodata type='left' message='No user request'/>
+                }
             </ul>
         </div>
         <div className="freindInviteStatusRight">
                 <div className="IntroDetails">
-                    <img src={detail.profilePicture} className='IntroImage'/>
+                    {loading == false ?
+                        <img src={detail.profilePicture} className='IntroImage'/>
+                    :
+                        <div className="IntroImageLoader"></div>
+                    }
                     <div className="details">
                         <div className="singleDetail" style={{width:'90%'}}>
                             <span className='Detail'>Solution contributed :</span>
@@ -155,12 +193,29 @@ export default function FriendinviteStatus() {
             </div>
             <div className="FriendsInnerContent">
                     <div className="FriendsInnerContentSection2" style={{display:'flex',flexDirection:'column',gap:'1px',overflowX:'scroll',overflowX:'hidden',height:'60vh'}}>
-                            {tab === 'question' && question.length > 0 && question?.map((item)=>(
+                            {tab === 'question' && 
+                               ( question.length > 0 ? question?.map((item)=>(
 
                                 <HomeQueryPostItems key={item._id} data={item} type='questionByExpert'/>
                             ))
+                            :
+
+                            (loading === true ?
+                             <div className="HomeQueryPostSection">
+                                    {       
+                                        arr.map((i)=>
+                                        (<HomeQueryPostItemsLoader/>)
+                                        )
+                                    }
+                            </div>
+
+                            :
+                            <Nodata type='right' message='No Question posted'/>))
+
                             }
-                            {tab === 'answer' && answer.length > 0 && 
+                            {tab === 'answer' && 
+                            
+                                 (answer.length > 0 ? 
                             
                                 <div className="HomeQueryAnsSection" >
                                 {answer?.map((item)=>(
@@ -169,8 +224,12 @@ export default function FriendinviteStatus() {
                                 ))}
                                 </div>
 
-                                }
+                                 :
+                                <Nodata type='right' message='No answer posted'/>)
+
+                            }
                     </div>
+                    
         </div>
 
         </div>

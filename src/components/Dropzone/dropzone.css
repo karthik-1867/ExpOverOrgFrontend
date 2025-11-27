@@ -1,0 +1,17 @@
+.dropArea{
+    border: 2px dashed #999;
+    border-radius: 5px;
+    padding: 20px;
+    height: 300px;
+    text-align: center;
+    color: #666;
+    cursor: pointer;
+    transition: border-color 0.3s;
+    background: linear-gradient(to bottom, #294c64, #112637);
+    color: white;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}

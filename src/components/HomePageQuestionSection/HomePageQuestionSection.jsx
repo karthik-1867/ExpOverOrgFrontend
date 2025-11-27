@@ -10,10 +10,12 @@ import HomeQueryPostItems from '../HomeQueryPostItems/HomeQueryPostItems';
 import {question} from "../../Dummy.js"
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import HomeQueryPostItemsLoader from '../HomequerypostItemsLoader/HomeQueryPostItemsLoader.jsx';
 
 export default function HomePageQuestionSection({type}) {
   const [user,setUser] = useState("");
   const [questions,setQuestion] = useState([]);
+  const [loading,setLoading] = useState(false);
   const [expertQuestions,setExpertQuestion] = useState();
 
   const id = useParams();
@@ -21,11 +23,19 @@ export default function HomePageQuestionSection({type}) {
   console.log('type',type)
   console.log("12sadasd",questions)
   console.log("homepageids",id)
+  const arr = Array(50).fill().map((_, i) => i);
 
   useEffect(()=>{
       const userDetails = async() => {
             try{
                
+                setLoading(true);
+                
+                if(id.id === 'loading'){
+                  return setLoading(true);     
+                }
+                
+                
                 if(type === 'question'){
                   const user = await axios.get(`${process.env.REACT_APP_URL}/user/getYourDetails`,{withCredentials:true})
                   setUser(user)
@@ -38,6 +48,7 @@ export default function HomePageQuestionSection({type}) {
                    console.log("questiuons",question)
                    setQuestion(question.data)
                 }
+                setLoading(false);
 
             }catch(e){
                 console.log(e)
@@ -77,10 +88,17 @@ export default function HomePageQuestionSection({type}) {
                         </div>
                   </div>
                   <div className="HomeQueryPostSection">
-                        {questions.length > 0 && questions?.map((item)=>(
+                        {loading == false && questions.length > 0 && questions?.map((item)=>(
 
-                              <HomeQueryPostItems key={item._id} data={item} type={type}/>
+                               <HomeQueryPostItems key={item._id} data={item} type={type}/>
+                               
                         ))
+                        }
+                        {
+                            loading == true && 
+                              arr.map((i)=>
+                              (<HomeQueryPostItemsLoader/>)
+                            )
                         }
                   </div>
             </div> 

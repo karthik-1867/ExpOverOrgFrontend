@@ -13,6 +13,7 @@
     background-blend-mode: screen, normal;
     color: #fff;
     overflow: hidden;
+    border-radius: 10px;
 }
 
 
@@ -36,7 +37,7 @@
     border-radius: 12px;
     border: 1px solid rgba(255, 140, 0, 0.06);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 -6px 20px rgba(255, 140, 0, 0.02) inset;
-    background: linear-gradient(to bottom, #112637, #294c64);
+    background:  #112637;
     border: 3px solid #294c64;
     backdrop-filter: blur(4px);
 }
@@ -44,6 +45,9 @@
 .LoginLabel {
     color: #ffab40; /* warm orange */
     font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .LoginInput {

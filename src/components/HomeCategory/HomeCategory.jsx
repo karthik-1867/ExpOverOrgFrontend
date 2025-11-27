@@ -1,8 +1,10 @@
 import React from 'react'
+import './homeCategory.css'
 
-export default function HomeCategory({data}) {
+
+export default function HomeCategory({data,handleCategory,selectedCategory}) {
   return (
-               <li className='cateorgyListItem'>
+               <li className={`cateorgyListItem ${selectedCategory===data._id && 'Selected'}`} onClick={()=>handleCategory(data)}>
                   <div className="categoryHomeDetailsInternal">
                     <img src={data?.categoryImage} alt="" className='catgoryImg' />
 

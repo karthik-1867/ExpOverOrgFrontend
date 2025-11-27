@@ -26,13 +26,13 @@ export default function Menu({page}) {
                     </NavLink>
                 </li>
                 <li >
-                   <NavLink to="/savee"  className={({ isActive }) => `${isActive ? 'MenuItem Active' : 'MenuItem'}`}>
+                   <NavLink to="/shareExpertise"  className={({ isActive }) => `${isActive ? 'MenuItem Active' : 'MenuItem'}`}>
                         <DriveFileRenameOutlineOutlinedIcon/>
                         Share expertise
                     </NavLink>
                 </li>
                 <li >
-                     <NavLink to="/save"  className={({ isActive }) => `${isActive ? 'MenuItem Active' : 'MenuItem'}`}>
+                     <NavLink to="/saveSection/save"  className={({ isActive }) => `${isActive ? 'MenuItem Active' : 'MenuItem'}`}>
                         <SaveOutlinedIcon/>
                         Save post
                       </NavLink>

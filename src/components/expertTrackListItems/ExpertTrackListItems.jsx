@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Groups2OutlinedIcon from '@mui/icons-material/Groups2Outlined';
 import GroupAddOutlinedIcon from '@mui/icons-material/GroupAddOutlined';
+import GroupRemoveOutlinedIcon from '@mui/icons-material/GroupRemoveOutlined';
 import { useNavigate, useParams } from 'react-router-dom';
 
-export default function ExpertTrackListItems({data,setId,section,api}) {
+export default function ExpertTrackListItems({data,setId,section,api,type,handleFollow}) {
 
  console.log("dataloogge",data,api,section)
  const navigate = useNavigate();
@@ -31,10 +32,18 @@ export default function ExpertTrackListItems({data,setId,section,api}) {
                             <Groups2OutlinedIcon/>
                             {data.followers}
                        </div>
-                       <div className="expertTrackOwnerFollow">
+                       {type === 'AllUser' ?
+                        <div className="expertTrackOwnerFollow" onClick={()=>handleFollow(data._id)}>
                             <GroupAddOutlinedIcon/>
-                            Follow
+                            {api === 'friendPage' ? 'Request' : ''}                           
                        </div>
+                       :
+                        <div className="expertTrackOwnerFollow" onClick={()=>handleFollow(data._id)}>
+                            <GroupRemoveOutlinedIcon/>  
+                            {api === 'friendPage' ? 'unfollow' : ''}                         
+                       </div>
+                       }
+
                   </div>
                 </li>
   )

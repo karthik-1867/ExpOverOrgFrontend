@@ -2,121 +2,121 @@ export const Users = [
     {
       id:1,
       profilePicture: "https://res.cloudinary.com/dnitpjr1v/image/upload/v1738475919/cld-sample-3.jpg",
-      username: "Karthik Venkat",
+      name: "Karthik Venkat",
       followers: 30
     },
     {
       id:2,
       profilePicture: "https://res.cloudinary.com/dnitpjr1v/image/upload/v1738475919/cld-sample.jpg",
-      username: "Genesh",
+      name: "Genesh",
       followers: 300
     },
     {
       id:3,
       profilePicture: "https://res.cloudinary.com/dnitpjr1v/image/upload/v1738475919/cld-sample-2.jpg",
-      username: "Alex Pandi",
+      name: "Alex Pandi",
       followers: 56
     },
     {
       id:4,
       profilePicture: "https://res.cloudinary.com/dnitpjr1v/image/upload/v1738475919/samples/woman-on-a-football-field.jpg",
-      username: "Durai Singam",
+      name: "Durai Singam",
       followers: 34
     },
     {
       id:5,
       profilePicture: "https://res.cloudinary.com/dnitpjr1v/image/upload/v1738475919/samples/dessert-on-a-plate.jpg",
-      username: "Thomas mama",
+      name: "Thomas mama",
       followers: 87
     },
     {
       id:6,
       profilePicture: "https://res.cloudinary.com/dnitpjr1v/image/upload/v1738475918/samples/coffee.jpg",
-      username: "Shreean",
+      name: "Shreean",
       followers: 253
     },
     {
       id:7,
       profilePicture: "https://res.cloudinary.com/dnitpjr1v/image/upload/v1738475918/samples/cup-on-a-table.jpg",
-      username: "Traavan",
+      name: "Traavan",
       followers: 123
     },
     {
       id:8,
       profilePicture: "https://res.cloudinary.com/dnitpjr1v/image/upload/v1738475918/samples/man-portrait.jpg",
-      username: "Kristen Thomas",
+      name: "Kristen Thomas",
       followers: 897
     },
     {
       id:9,
       profilePicture: "https://res.cloudinary.com/dnitpjr1v/image/upload/v1738475918/samples/man-on-a-street.jpg",
-      username: "Gary Duty",
+      name: "Gary Duty",
       followers: 987
     },
     {
       id:10,
       profilePicture: "https://res.cloudinary.com/dnitpjr1v/image/upload/v1738475918/samples/man-on-a-escalator.jpg",
-      username: "Karthik Venkat",
+      name: "Karthik Venkat",
       followers: 976
     },
      {
       id:1,
       profilePicture: "https://res.cloudinary.com/dnitpjr1v/image/upload/v1738475919/cld-sample-3.jpg",
-      username: "Karthik Venkat",
+      name: "Karthik Venkat",
       followers: 342
     },
     {
       id:2,
       profilePicture: "https://res.cloudinary.com/dnitpjr1v/image/upload/v1738475919/cld-sample.jpg",
-      username: "Genesh",
+      name: "Genesh",
       followers: 2341
     },
     {
       id:3,
       profilePicture: "https://res.cloudinary.com/dnitpjr1v/image/upload/v1738475919/cld-sample-2.jpg",
-      username: "Alex Pandi",
+      name: "Alex Pandi",
       followers: 9843
     },
     {
       id:4,
       profilePicture: "https://res.cloudinary.com/dnitpjr1v/image/upload/v1738475919/samples/woman-on-a-football-field.jpg",
-      username: "Durai Singam",
+      name: "Durai Singam",
       followers: 34
     },
     {
       id:5,
       profilePicture: "https://res.cloudinary.com/dnitpjr1v/image/upload/v1738475919/samples/dessert-on-a-plate.jpg",
-      username: "Thomas mama",
+      name: "Thomas mama",
       followers: 9087
     },
     {
       id:6,
       profilePicture: "https://res.cloudinary.com/dnitpjr1v/image/upload/v1738475918/samples/coffee.jpg",
-      username: "Shreean",
+      name: "Shreean",
       followers: 453
     },
     {
       id:7,
       profilePicture: "https://res.cloudinary.com/dnitpjr1v/image/upload/v1738475918/samples/cup-on-a-table.jpg",
-      username: "Traavan",
+      name: "Traavan",
       followers: 231
     },
     {
       id:8,
       profilePicture: "https://res.cloudinary.com/dnitpjr1v/image/upload/v1738475918/samples/man-portrait.jpg",
-      username: "Kristen Thomas",
+      name: "Kristen Thomas",
       followers: 853
     },
     {
       id:9,
       profilePicture: "https://res.cloudinary.com/dnitpjr1v/image/upload/v1738475918/samples/man-on-a-street.jpg",
-      username: "Gary Duty",
+      name: "Gary Duty",
       followers: 30123
     },
     {
       id:10,
       profilePicture: "https://res.cloudinary.com/dnitpjr1v/image/upload/v1738475918/samples/man-on-a-escalator.jpg",
-      username: "Karthik Venkat",
+      name: "Karthik Venkat",
       followers: 3012
     }
   ];

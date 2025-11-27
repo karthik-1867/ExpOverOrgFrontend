@@ -44,7 +44,7 @@ export default function Knowledge({type}){
     
     return(
         <>
-         <div className="KnowledgeContainer" style={{padding:'10px 0px',width:'100%',boxSizing:'border-box'}}>
+         <div className="KnowledgeContainer" style={{width:'100%',boxSizing:'border-box'}}>
             <div className="knowledgeLeftSide">
               {knowledge?.map((item)=>(
 

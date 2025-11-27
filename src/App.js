@@ -20,6 +20,9 @@ import CommunityInviteStatus from "./components/communityInviteStatus/CommunityI
 import FriendinviteStatus from "./components/inviteStatus/FriendinviteStatus";
 import CreateCommunity from "./components/createCommunity/CreateCommunity";
 import IntroDetails from "./components/IntroDetails/IntroDetails";
+import AttachedFolder from "./pages/attachedFolder/AttachedFolder";
+import SubFolder from "./pages/SubFolders/SubFolder";
+import SaveSection from "./pages/SaveSection/SaveSection";
 
 function App() {
   const [page,setPage] = useState('home');
@@ -46,7 +49,13 @@ function App() {
                         <Route path="friendquestions" element={<HomePageQuestionSection type='friendquestions'/>} />
                        <Route path="answer/:id" element={<HomePageAnsSect />} />
                   </Route>
-                  <Route path="/save" element={<SavePost />} />
+                  
+                  <Route path="/saveSection" element={<SaveSection/>}>
+                       <Route index path="save" element={<SavePost />} />
+                       <Route path="subFolder/:id" element={<SubFolder />} /> 
+                  </Route>
+
+                  <Route path="/attachedFolderId" element={<AttachedFolder />} />
                   <Route path="/expertTrack" element={<ExpertTrack />} >
                       <Route index path="questions/:id" element={<HomePageQuestionSection  type='questionByExpert'/>} />
                       <Route path="answer/:id" element={<ExpertPageAnsSection />} />

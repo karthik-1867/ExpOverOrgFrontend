@@ -1,0 +1,21 @@
+.breadCrumbMenu{
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    align-items: center;
+    flex: 9;
+}
+
+.BreadCrumbContainer{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 1px;
+}
+
+.BreadCrumbImg{
+     width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}

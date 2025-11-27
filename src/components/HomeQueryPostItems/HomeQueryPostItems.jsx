@@ -63,7 +63,7 @@ export default function HomeQueryPostItems({data, type}){
                                             </div>
                                             <div className="HomeQueryMidSectionRight">
                                                   <p className='HomeQueryMidSectionRightShortDesc'>{data.QuestionTitle}</p>
-                                                  <CodeEditor/>
+                                                  {data.code!='' && <CodeEditor value={data.code}/>}
                                                   <p className="HomeQueryMidSectionRightLongDesc">
                                                         {data.QuestionBody}
                                                   </p>

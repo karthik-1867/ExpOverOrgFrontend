@@ -112,7 +112,7 @@ export default function Community() {
                        Followed {communityType} community
                    </button>
               </div>}
-              <ul className='expertTrackContainerLists'>
+              <ul className='expertTrackContainerLists2'>
                    {communityList.map((user)=>(
                        <CommunityUserList key={user.id} data={user} setId={setId} api={api} section={section}/>
                    ))}

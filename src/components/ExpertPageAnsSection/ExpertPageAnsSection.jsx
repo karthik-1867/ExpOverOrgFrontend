@@ -11,20 +11,25 @@ import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import AnswerList from '../AnswerList/AnswerList';
+import Nodata from '../Nodata/Nodata';
 export default function ExpertPageAnsSection() {
-      const [ans,setAns] = useState("");
+      const [ans,setAns] = useState([]);
+      const [loading,setLoading]  = useState(false)
       const id = useParams();
       
-      console.log("ans",ans,id)
+      console.log("answer section call",ans,id)
 
       useEffect(()=>{
             const answer = async() => {
+                  setLoading(true)
                   try{
                        const ans = await axios.get(`${process.env.REACT_APP_URL}/answer/getAnswersByUserId/${id.id}`,{withCredentials:true})
                        setAns(ans.data)
+                       setLoading(false)
                   }catch(e){
                        console.log(e)
                   }
+                  
             }
 
             answer();
@@ -37,6 +42,9 @@ export default function ExpertPageAnsSection() {
                               { ans.length > 0 && ans?.map((item)=>(
                                     <AnswerList key={item._id} data={item}/>
                               ))}
+                              {ans.length === 0 && loading === false &&
+                              <Nodata message='No answers posted yet' />
+                              }
                               
                         </div>
             </div>

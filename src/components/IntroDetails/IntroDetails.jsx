@@ -8,6 +8,8 @@ import axios from 'axios';
 import HomeQueryPostItems from '../HomeQueryPostItems/HomeQueryPostItems';
 import AnswerList from '../AnswerList/AnswerList';
 import CategoryList from '../CategoryList/CatgeoryList';
+import HomeQueryPostItemsLoader from '../HomequerypostItemsLoader/HomeQueryPostItemsLoader';
+import Nodata from '../Nodata/Nodata';
 export default function IntroDetails(){ 
     const [detail,setDetail] = useState('');
     const [tab,setTab] = useState('question');
@@ -15,18 +17,44 @@ export default function IntroDetails(){
     const [answer,setAnswer] = useState('');
     const [knowledge,setKnowledge] = useState('');
     const [category,setCategory] = useState('');
+    const [loading,setLoading] = useState(false);
 
     const id = useParams();
+    const arr = Array(10).fill().map((_, i) => i);
 
     console.log("detial",detail)
     useEffect(()=>{
         const getUser = async() => {
-            const user = await axios.get(`${process.env.REACT_APP_URL}/user/getUserDetailById/${id.id}`,{withCredentials:true});
-            const question = await axios.get(`${process.env.REACT_APP_URL}/question/getTop5Question/${id.id}`,{withCredentials:true})
-            setDetail(user.data);
-            setQuestion(question.data);
-            const category = await axios.post(`${process.env.REACT_APP_URL}/category/getCategoryBasedOnList`,{list:`${user.data.expertise}`},{withCredentials:true})
-            setCategory(category.data);
+            
+            setLoading(true);
+            if(id.id == 'loading')
+            {
+                setLoading(true);
+            }
+            else
+            {
+                const user = await axios.get(`${process.env.REACT_APP_URL}/user/getUserDetailById/${id.id}`,{withCredentials:true});
+               
+                if(tab === 'question'){               
+                const question = await axios.get(`${process.env.REACT_APP_URL}/question/getTop5Question/${id.id}`,{withCredentials:true})
+                setDetail(user.data);
+                setQuestion(question.data);
+                }
+                else if(tab === 'answer'){
+                    const answer = await axios.get(`${process.env.REACT_APP_URL}/answer/getTop5AnswersByUserId/${id.id}`,{withCredentials:true})
+                    setDetail(user.data);
+                    setAnswer(answer.data);
+                }
+                else{   
+                }
+               
+               
+                setLoading(false)
+                const category = await axios.post(`${process.env.REACT_APP_URL}/category/getCategoryBasedOnList`,{list:`${user.data.expertise}`},{withCredentials:true})
+                setCategory(category.data);
+
+            }
+
         }
 
         getUser();
@@ -40,6 +68,7 @@ export default function IntroDetails(){
                    const question = await axios.get(`${process.env.REACT_APP_URL}/question/getTop5Question/${id.id}`,{withCredentials:true})
                     setQuestion(question.data);
               }else if(tab === 'answer'){
+                    setAnswer([]);
                     const answer = await axios.get(`${process.env.REACT_APP_URL}/answer/getTop5AnswersByUserId/${id.id}`,{withCredentials:true})
                     setAnswer(answer.data);
               }else{
@@ -51,7 +80,10 @@ export default function IntroDetails(){
         <div className="IntroDetailsContainer">
             <div className="freindInviteStatusRight">
                 <div className="IntroDetails">
+                    {loading == false ? 
                     <img src={detail.profilePicture} className='IntroImage'/>
+                     :
+                        <div className="IntroImageLoader"></div>}
                     <div className="details">
                         <div className="singleDetail">
                             <span className='Detail'>Solution contributed :</span>
@@ -121,12 +153,18 @@ export default function IntroDetails(){
                 </div>
                 <div className="FriendsInnerContent">
                     <div className="FriendsInnerContentSection2" style={{display:'flex',flexDirection:'column',gap:'1px',overflowX:'scroll',overflowX:'hidden',height:'60vh'}}>
+                            {
+                                loading == true &&
+                                arr.map((i)=>
+                                (<HomeQueryPostItemsLoader/>)
+                                )
+                            }
                             {tab === 'question' && question.length > 0 && question?.map((item)=>(
 
                                 <HomeQueryPostItems key={item._id} data={item} type='questionByExpert'/>
                             ))
                             }
-                            {tab === 'answer' && answer.length > 0 && 
+                            {tab === 'answer' && (answer.length > 0 ? 
                             
                                 <div className="HomeQueryAnsSection" >
                                 {answer?.map((item)=>(
@@ -134,8 +172,10 @@ export default function IntroDetails(){
                                     <AnswerList key={item._id} data={item}/>
                                 ))}
                                 </div>
+                                :
+                                <Nodata message='No answers posted yet' />)
 
-                                }
+                            }
                     </div>
                 </div>
 
