@@ -1,0 +1,112 @@
+.SaveTypeSelectContainer{
+    background-color: black;
+    border-radius: 10px;
+    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    gap: 39px;
+    align-items: center;
+    justify-content: center;
+    background: #36454f;
+    background: linear-gradient(to bottom, #294c64, #112637);
+      background: linear-gradient(
+    to right,
+    red 0%, red 33%,
+    lightgreen 33%, lightgreen 67%,
+    orange 66%, orange 100%
+  );
+    border: 2px solid #294c64;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 -6px 20px rgba(255, 140, 0, 0.02) inset;
+    background-blend-mode: screen, normal;
+    color: #fff;
+    overflow: hidden;
+}
+
+.SaveTypeQuestionSection{
+    height: 70vh;
+    width: 400px;
+    background-color: black;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 -6px 20px rgba(255, 140, 0, 0.02) inset;
+    gap: 5px;
+
+}
+
+.SaveTypeImg{
+    height: 40vh;
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.SaveTypeQuestionSectionButton{
+    background-color: red;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+}
+
+.orangeButton{
+    background: linear-gradient(to right, orange, #715422);
+}
+
+.lightGreenButton{
+    background-color: lightgreen;
+    color: navy;
+}
+
+.lightGreenButtonGradient{
+    background: linear-gradient(to right, lightgreen, #214721);
+    color: white;
+}
+
+.lightGreenDetail{
+    background-color: lightgreen;
+    color: navy;
+}
+
+.redDetailGradient{
+        background: linear-gradient(to right, red, #531802);
+}
+
+.IntroDetailsBannerSaveType{
+   
+    position: relative;
+    overflow: hidden;
+}
+
+.IntroDetailsBannerSaveType .overlaySaveType{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, /* dark at bottom */ rgba(0, 0, 0, 0) 100% /* fade to transparent */);
+}
+
+
+.SaveTypeBoxContainer{
+background-color: #10196640;
+    border-radius: 10px;
+    padding: 10px;
+    color: orange;
+    display: flex;
+    width: 100%;
+    border: 2px solid #59bcff6e;
+    align-items: center;
+    gap: 10px;
+    box-sizing: border-box;
+
+}
+
+.SaveTypeRight{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,14 +1,15 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import InsertCommentOutlinedIcon from '@mui/icons-material/InsertCommentOutlined';
 
-export default function KnowLedgeUser({data,communityId}) {
+export default function KnowLedgeUser({data,id}) {
  
-console.log("full knowedge",data)
+console.log("full knowedge sdasd",data)
   return (
-             <NavLink to={`/community/individualKnowledge/${communityId}/${data.yoursId._id}`} style={{textDecoration:'none'}}>
+             <NavLink to={`/community/individualKnowledge/${data.communityId}/${data.yoursId._id}`} style={{textDecoration:'none'}}>
 
      
-                <li className='expertTrackContainerListItem' >
+                <li className={`expertTrackContainerListItemRight ${id===data.yoursId._id && 'Selected'}`} >
                   <div className="expertTrackOwnerDetails">
                     <img src={data?.yoursId?.profilePicture} alt="" className='expertTrackOwnerprofileImg'/>
 
@@ -17,10 +18,9 @@ console.log("full knowedge",data)
                     </div>
                   </div>
                   <div className="expertTrackOwnerLeftDetails">
-                       <div className="expertTrackOwnerFollow">
-                           Count
-                            :
-                            {data.count}
+                       <div className="expertTrackOwnerLeftFollowers">
+                            <InsertCommentOutlinedIcon/>
+                            {data.count<10 ? '0'+data.count : data.count}
                        </div>
                   </div>
                 </li>

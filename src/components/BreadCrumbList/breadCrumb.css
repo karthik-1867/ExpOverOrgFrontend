@@ -4,6 +4,7 @@
     width: fit-content;
     align-items: center;
     flex: 9;
+    padding: 10px;
 }
 
 .BreadCrumbContainer{

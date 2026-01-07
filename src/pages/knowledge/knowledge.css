@@ -1,20 +1,28 @@
 .KnowledgeContainer{
     display: flex;
     gap: 10px;
-    
+    background: #36454f;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .knowledgeLeftSide{
     flex: 2.5;
     border-radius: 10px;
     padding: 10px;
-    background-color: black;
-    border: 1px solid white;
+    height: 100vh;
+    overflow-y: scroll;
+    background-color: #00000080;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 -6px 20px rgba(255, 140, 0, 0.02) inset;
+    backdrop-filter: blur(4px);
 }
 
 .knowledgeRightSide{
     flex: 1;
     padding: 10px;
-    background-color: black;
+   
     border-radius: 10px;
+        background-color: #00000080;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 -6px 20px rgba(255, 140, 0, 0.02) inset;
+    backdrop-filter: blur(4px);
 }

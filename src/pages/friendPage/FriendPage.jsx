@@ -5,6 +5,9 @@ import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import HelpRoundedIcon from '@mui/icons-material/HelpRounded';
 import PsychologyAltOutlinedIcon from '@mui/icons-material/PsychologyAltOutlined';
 import CallToActionOutlinedIcon from '@mui/icons-material/CallToActionOutlined';
+import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
+import EmojiObjectsOutlinedIcon from '@mui/icons-material/EmojiObjectsOutlined';
+import ConnectWithoutContactOutlinedIcon from '@mui/icons-material/ConnectWithoutContactOutlined';
 import { Users } from '../../Dummy';
 import ExpertTrackListItems from '../../components/expertTrackListItems/ExpertTrackListItems';
 import HomePageQuestionSection from '../../components/HomePageQuestionSection/HomePageQuestionSection';
@@ -17,7 +20,7 @@ import Nodata from '../../components/Nodata/Nodata';
 import HomeQueryPostItemsLoader from '../../components/HomequerypostItemsLoader/HomeQueryPostItemsLoader';
 
 export default function FriendPage() {
-
+const [searchTokenSelected,setSearchTokenSelected] = useState({selected:'false',data:{}})
     const [type,SetType] = useState('AllUser');
     const [tab,setTab] = useState(false);
     const [section,setSection] = useState('questions')
@@ -29,11 +32,12 @@ export default function FriendPage() {
   
     console.log("alluser",alluser)
     console.log("setid",id)
-    const arr = Array(10).fill().map((_, i) => i);
+    const arr = Array(50).fill().map((_, i) => i);
       
     const getUser = async() => {
             try{
                  setAllUser([]);
+                 setId('')
                  setLoading(true);
                  if(type === 'AllUser'){
                       navigate(`/friendPage/introDetail/loading`)
@@ -85,14 +89,19 @@ export default function FriendPage() {
      const handleFollow = async(userId) => {
           try{
                if(type === 'AllUser'){
+                    setLoading(true);
                     await axios.post(`${process.env.REACT_APP_URL}/friends/inviteFriend/${userId}`,{},{withCredentials:true})
                     getUser();
+
                }else{
+                     navigate(`/friendPage/questions/loading`);
                     await axios.delete(`${process.env.REACT_APP_URL}/friends/unfriend/${userId}`,{withCredentials:true})
-                    const user = await axios.get(`${process.env.REACT_APP_URL}/friends/friendsList`,{withCredentials:true})
-                    navigate(`/friendPage/questions/${user.data[0]?._id}`);
-                    setAllUser(user.data)
-                    setId(user.data[0]?._id)
+                    // const user = await axios.get(`${process.env.REACT_APP_URL}/friends/friendsList`,{withCredentials:true})
+                    // navigate(`/friendPage/questions/${user.data[0]?._id}`);
+                    getUser();
+                    // setAllUser(user.data)
+                    // setId(user.data[0]?._id)
+
                     
                }
                
@@ -124,13 +133,13 @@ export default function FriendPage() {
               </div>
               <ul className='expertTrackContainerLists2'>
                    {alluser?.map((user)=>(
-                       <ExpertTrackListItems key={user.id} data={user} setId={setId} section={section} api={api} type={type} handleFollow={handleFollow}/>
+                       <ExpertTrackListItems key={user.id} data={user} setId={setId} id={id} section={section} api={api} type={type} handleFollow={handleFollow}/>
                    ))}
                     {
                     loading==true &&
                     
                          arr.map((i)=>
-                         (<PeopleLoader type={type}/>)
+                         (<PeopleLoader type={type} category='friend'/>)
                          )
                          
                          
@@ -161,12 +170,12 @@ export default function FriendPage() {
               </div>}
               {type=='AllUser' ? 
               <div className="friendContainerRightContent">
-                     <Outlet context={{ handleUpdate }}/>
+                     <Outlet context={{ handleUpdate,searchTokenSelected }}/>
                </div>
                :
                 <div className="friendContainerRightContent">
                 {/* <HomePageQuestionSection/> */}
-                 {alluser.length!=0 &&  <Outlet context={{ handleUpdate }} /> }
+                 {alluser.length!=0 &&  <Outlet context={{ handleUpdate,searchTokenSelected }} /> }
                  {(alluser.length === 0 && loading === false )
                                      ? 
                                      
@@ -181,13 +190,40 @@ export default function FriendPage() {
                                      
                                      loading === true 
                                                         ?
-                                                        
+                                                         <div className="HomeQuery">
+                                                                      <div className="HomeQueryHeading">
+
+                                                                           <div className="HomeQueryNameAndImg">
+                                                                                     <img src="https://cdn.pixabay.com/photo/2024/05/26/10/15/bird-8788491_1280.jpg" alt="" className='HomeQueryImgProfile'/>
+                                                                                     <div className="HomeQueryNameSection">
+
+                                                                                     Karthik
+                                                                                     <span className='HomeQueryDesign'>Software engineer</span>
+                                                                                     </div>
+                                                                           </div>
+                                                                           <div className="HomeContriButionAndFollowers">
+
+                                                                                     <div className="HomeUrFollower">
+                                                                                          <GroupOutlinedIcon/>
+                                                                                          Follower : 300
+                                                                                     </div>
+                                                                                     <div className="HomeUrContribution">
+                                                                                          <EmojiObjectsOutlinedIcon/>
+                                                                                          Solution contributed : 20
+                                                                                     </div>
+                                                                                     <div className="HomeUrFriend">
+                                                                                          <ConnectWithoutContactOutlinedIcon/>
+                                                                                          Friend : 30
+                                                                                     </div>
+                                                                           </div>
+                                                                      </div>
                                                         <div className="HomeQueryPostSection">
                                                              {       
                                                                   arr.map((i)=>
                                                                   (<HomeQueryPostItemsLoader/>)
                                                                   )
                                                              }
+                                                        </div>
                                                         </div>
                                                         :
                                                         <></>  

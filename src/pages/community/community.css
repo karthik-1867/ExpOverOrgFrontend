@@ -17,3 +17,20 @@
     border-radius: 10px;
 }
 
+.expertContainerSubSelectButton{
+    padding: 10px;
+    width: 49%;
+    border: none;
+    font-size: 12px;
+    font-weight: bold;
+    background: linear-gradient(to bottom, white, #a09999);
+    border: 2px solid white;
+    color: black;
+    font-variation-settings: "wdth" 70;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+}
+

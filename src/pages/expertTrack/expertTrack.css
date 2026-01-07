@@ -63,7 +63,7 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
     overflow-y: scroll;
     height: 90vh;  
 }
@@ -74,12 +74,76 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
     overflow-y: scroll;
     height: 90vh;  
     background-color: black;
     padding: 10px;
     border-radius: 10px;
+    position: relative;
+}
+
+.chooseBox{
+    position: relative;
+    
+    top: -0px;
+    z-index: 1;
+    display: flex;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: bold;
+    justify-content: center;
+    gap:5px;
+    
+    
+    font-variation-settings: "wdth" 75;
+}
+
+.All{
+    color: orange;
+    background: #935f00;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    gap:5px
+}
+
+.Accepted{
+    color: rgb(56, 202, 56);
+    background: rgb(51, 128, 7);
+    border: 1px solid;
+  
+
+}
+
+.Rejected{
+    color: red;
+    background: rgba(203, 0, 0, 0.67);
+    border: 1px solid;
+    
+}
+
+.unSelected{
+
+    color: white;
+    background: #9a9494a6;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.All,.Accepted,.Rejected,.unSelected
+{
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+        font-variation-settings: "wdth" 70;
+     border-radius: 3px;
+     padding: 3px;
+    flex: 1;
+     font-weight: bold;
+     border-radius:4px
 }
 
 .categoryListItems{
@@ -110,17 +174,31 @@
      color: white;
 }
 
-.Selected{
+.expertTrackContainerListItemRight{
+    width: 100%;
+    background-color: #294c64;
+    background: linear-gradient(to right, #294c64, #112637);
+    border: 2px solid #294c64;
+    border-radius: 10px;
+    padding: 10px;
+     box-sizing: border-box;
+     display: flex;
+     justify-content: space-between;
+
+     color: white;
+}
+
+/* .Selected{
     border: 2px solid orange;
        
     
     
-}
+} */
 
 .cateorgyListItem{
     width: 100%;
     background-color: #294c64;
-        background: linear-gradient(to bottom, #294c64, #112637);
+        background: linear-gradient(to right, #294c64, #112637);
     border: 2px solid #294c64;
     border-radius: 10px;
     padding: 10px;
@@ -141,17 +219,32 @@
     gap: 10px;
     align-items: center;
     color: white;
+    
     font-size: 13px !important;
 }
 
 .expertTrackOwnerprofileImg{
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 10px;
     object-fit: cover;
     padding: 3px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 -6px 20px rgba(255, 140, 0, 0.02) inset;
+        background: linear-gradient(to right, #294c64, #112637);
     border: 2px solid orange;
     
+}
+
+.red{
+    border: 2px solid red;
+}
+
+.green{
+    border: 2px solid lightgreen;
+}
+
+.gray{
+    border: 2px solid #ccc;
 }
 
 .catgoryImg{
@@ -163,10 +256,21 @@
 
 
 
-.expertTrackOwnerNameAndDesignation{
+.expertTrackOwnerNameAndDesignation,.expertTrackOwnerNameAndDesignationRight{
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 3px;
+}
+
+.expertTrackOwnerNameAndDesignation2{
+    display: flex;
+    
+    gap: 3px;
+}
+
+.expertTrackOwnerprofileBadge{
+    height: 50px;
+    width: 50px;
 }
 
 .expertTrackOwnerLeftDetails{
@@ -174,7 +278,7 @@
     align-items: center;
     justify-content: flex-end;
     gap : 10px;
-    width: 40%;
+
 }
 
 .expertTrackOwnerLeftFollowers,.expertTrackOwnerFollow{
@@ -206,6 +310,19 @@
     background: linear-gradient(to bottom, red, #742a2a);
     border: 1px solid red;
     color: white;
+    padding: 3px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.communityFollow{
+     background: linear-gradient(to bottom, orange, #af5f14) !important;
+    border: 2px solid orange !important;
+    color: white !important;
+    display: flex;
+    align-items: center;
+    gap: 5px;
     padding: 3px;
     border-radius: 5px;
     font-size: 13px;

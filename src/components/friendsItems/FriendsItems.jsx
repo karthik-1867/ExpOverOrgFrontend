@@ -2,9 +2,9 @@ import React from 'react'
 import Groups2OutlinedIcon from '@mui/icons-material/Groups2Outlined';
 import GroupAddOutlinedIcon from '@mui/icons-material/GroupAddOutlined';
 
-export default function FriendsItems({data,setId,type,handleAccept}) {
+export default function FriendsItems({data,setId,type,handleAccept,id}) {
   return (
-            <li className='expertTrackContainerListItem' onClick={()=>setId(data._id)}>
+            <li className={`expertTrackContainerListItem ${id===data._id && 'Selected'}`} onClick={()=>setId(data._id)}>
                   <div className="expertTrackOwnerDetails">
                     <img src={data?.profilePicture} alt="" className='expertTrackOwnerprofileImg'/>
 
@@ -16,7 +16,7 @@ export default function FriendsItems({data,setId,type,handleAccept}) {
                   <div className="expertTrackOwnerLeftDetails">
                       <div className="expertTrackOwnerLeftFollowers">
                             <Groups2OutlinedIcon/>
-                            {data.followers}
+                            {data.count}
                        </div>
                         {type === 'friend' && 
                           <div className="expertTrackOwnerFollow" onClick={()=>handleAccept(data._id)}>

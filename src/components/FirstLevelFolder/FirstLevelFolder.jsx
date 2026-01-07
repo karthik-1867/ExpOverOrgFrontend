@@ -1,6 +1,9 @@
 
 import React, { useEffect } from 'react'
 import ArrowRightAltOutlinedIcon from '@mui/icons-material/ArrowRightAltOutlined';
+import FolderOpenIcon from '@mui/icons-material/FolderOpen';
+import TopicIcon from '@mui/icons-material/Topic';
+import Groups2OutlinedIcon from '@mui/icons-material/Groups2Outlined';
 import { useNavigate } from 'react-router-dom';
 export default function FirstLevelFolder({data,handleFolderId,setBreadCrumbList,folderId,setPrevId}) {
    const navigate = useNavigate();
@@ -32,7 +35,7 @@ export default function FirstLevelFolder({data,handleFolderId,setBreadCrumbList,
   return (
             <li 
               id={`folder-${data._id}`}
-              className={`expertTrackContainerListItem ${data._id === folderId && 'Selected'}`} 
+              className={`expertTrackContainerListItemRight ${data._id === folderId && 'Selected'}`} 
               onClick={()=>handleFolderId(data._id)}
             >
                   <div className="expertTrackOwnerDetails">
@@ -44,6 +47,10 @@ export default function FirstLevelFolder({data,handleFolderId,setBreadCrumbList,
                     </div>
                   </div>
                   <div className="expertTrackOwnerLeftDetails">
+                         <div className="expertTrackOwnerLeftFollowers">
+                            <TopicIcon/>
+                            00
+                       </div>
                        <div className="expertTrackOwnerFollow" onClick={(e)=>handleSubFolderRouting(e)}>
                             <ArrowRightAltOutlinedIcon/>  
                        </div>

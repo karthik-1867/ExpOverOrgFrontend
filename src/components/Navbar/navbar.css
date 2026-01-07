@@ -1,6 +1,7 @@
 .Navbar{
     background-color: orange;
     height: 35px;
+    background: red;
     color: rgb(63, 63, 63);
     padding: 5px;
     display: flex;
@@ -19,6 +20,7 @@
     width: fit-content;
     padding: 3px;
     color: orange;
+    color: red;
     border-radius: 3px;
 }
 
@@ -28,14 +30,14 @@
 
 .NavbarSearch{
     display: flex;
-    background-color: darkgoldenrod;
+    background-color: black;
     align-items: center;
 
-    border: 1px solid white;
+    background: linear-gradient(to left, #294c64, #112637);
     padding: 3px;
     width: 30%;
     color: white;
-    border-radius: 50px;
+    border-radius: 10px;
     display: flex;
     gap: 10px;
     transform: translateX(-50%);
@@ -44,12 +46,14 @@
 .NavbarSearchPlace{
   border: none;
   outline: none;
+  color: white;
   background-color: transparent;
 }
 
 .NavbarSearchPlace::placeholder{
-    color: white;
-    font-weight: bold;
+    color: grey;
+
+    font-variation-settings: "wdth" 70;
 }
 
 .NavbarProfile{

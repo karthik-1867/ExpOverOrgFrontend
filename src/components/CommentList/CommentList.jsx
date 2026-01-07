@@ -33,6 +33,9 @@ export default function CommentList({data}){
                                           <div className="HomeQueryMidSectionRight">
                                                 
                                                 <p className="HomeQueryMidSectionRightLongDesc">
+                                                      <h className='HomeQueryMidSectionRightLongDescHeading'>                                                   
+                                                         Comment:
+                                                      </h>
                                                       {data.AnswerBody}
                                                 </p>
 

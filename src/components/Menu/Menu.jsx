@@ -21,7 +21,10 @@ export default function Menu({page}) {
            
                 <li >
                      <NavLink to="/allpost"  className={({ isActive }) => `${isActive ? 'MenuItem Active' : 'MenuItem'}`}>
-                        <PostAddIcon/>
+                     
+
+                            <PostAddIcon/>
+                      
                         All post
                     </NavLink>
                 </li>
@@ -32,7 +35,7 @@ export default function Menu({page}) {
                     </NavLink>
                 </li>
                 <li >
-                     <NavLink to="/saveSection/save"  className={({ isActive }) => `${isActive ? 'MenuItem Active' : 'MenuItem'}`}>
+                     <NavLink to="/saveSection"  className={({ isActive }) => `${isActive ? 'MenuItem Active' : 'MenuItem'}`}>
                         <SaveOutlinedIcon/>
                         Save post
                       </NavLink>
@@ -68,14 +71,19 @@ export default function Menu({page}) {
                 <HistoryOutlinedIcon/>
                 History
             </li>
-            <li className='MenuItem'>
-                <NotificationsActiveIcon/>
-                Notification
+            <li>
+                  <NavLink to="/Notification"  className={({ isActive }) => `${isActive ? 'MenuItem Active' : 'MenuItem'}`}>
+                
+                    <NotificationsActiveIcon/>
+                    Notification
+                  </NavLink>
             </li>
 
-            <li className='MenuItem'>
-                <ManageAccountsIcon/>
-                Profile
+            <li >
+                <NavLink to="/profile"  className={({ isActive }) => `${isActive ? 'MenuItem Active' : 'MenuItem'}`}>
+                    <ManageAccountsIcon/>
+                    Profile
+               </NavLink>
             </li>
                         <li className='MenuItem'>
                 <LogoutIcon/>

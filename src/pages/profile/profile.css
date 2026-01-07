@@ -1,0 +1,398 @@
+.ProfileContainer{
+padding: 10px;
+    background-color: #36454f;
+    border-radius: 10px;
+    height: 100vh;
+    display: flex;
+    gap: 10px;
+}
+
+.ProfileLeft{
+    flex: 2;
+    background: rgba(0, 0, 0, 0.52);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 -6px 20px rgba(255, 140, 0, 0.02) inset;
+    backdrop-filter: blur(4px);
+   
+}
+
+.ProfileMid{
+        flex: 5 1;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.52);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 -6px 20px rgba(255, 140, 0, 0.02) inset;
+    backdrop-filter: blur(4px);
+    
+}
+
+.ProfileRight{
+    flex: 2;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+.ProfileRightUBox{
+display: flex;
+    background: rgba(0, 0, 0, 0.52);
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 -6px 20px rgba(255, 140, 0, 0.02) inset;
+    backdrop-filter: blur(4px);
+
+}
+
+.profileImg2{
+    width: 100%;
+    height: 240px;
+    border-radius: 10px;
+    object-fit: cover;
+    padding: 10px;
+    border: 3px solid orange;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+
+.IntroDetailsBanner2{
+    width: 100%;
+    height: 240px;
+     position: relative;
+     overflow: hidden;
+}
+
+
+.IntroDetailsBanner2 .overlay {
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 0; top: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.7) 0%,   /* dark at bottom */
+    rgba(0, 0, 0, 0) 60%     /* fade to transparent */
+  );
+}
+
+/* text on top */
+.IntroDetailsBanner2 .text-content {
+    position: absolute;
+
+    bottom: -5px;
+    left: 50%;
+    width: fit-content;
+    transform: translateX(-50%);
+    font-size: 8px;
+    font-variation-settings: "wdth" 70;
+    color: white;
+    z-index: 2;
+
+}
+
+.ProfileInfos{
+    background: gainsboro;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+
+    background: linear-gradient(to bottom, #294c64, #112637);
+    border: 2px solid #294c64;
+}
+
+.ProfileLoginInputs{
+    
+    margin: 0px;
+    margin-bottom: 10px;
+    position: relative;
+    
+}
+
+.ProfileLabel{
+    position: absolute;
+    font-size: 12px;
+    
+    border-radius: 8px;
+    color: orange;
+    padding: 3px;
+    left: 13px;
+    font-weight: bold;
+    width: 50px;
+   
+    top: 7px;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.ProfileIcon{
+    font-size: 12px !important;
+}
+
+.ProfileEdit{
+    position: absolute;
+    right: 10px;
+
+    border-radius: 5px;
+    top: 21px;
+    color: orange;
+    border: 1px solid orange;
+    background-color: #ffa50078;
+}
+
+.ProfileWrapper{
+    padding: 10px;
+    background-color: black;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.ProfileInput{
+    padding: 15px;
+
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    color: #afa8a8;
+    margin-top: 10px;
+    box-sizing: border-box;
+    background-color: #112637;
+    border: 1px solid #868073;
+        font-variation-settings: "wdth" 70;
+
+}
+
+.ProfileHeading{
+    color: gray;
+    margin: 0;
+    font-size: 16px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid;
+   /* background: linear-gradient(45deg, #FF9800, #ff0000, #000000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-image: linear-gradient(to right, #FF9800, #000000) 1; */
+}
+
+.ProfileUpdateButton{
+    padding: 10px;
+    width: 100%;
+   
+    color: white;
+    border-radius: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: bolder;
+    background: linear-gradient(90deg, #ff8c00, #ffb347);
+}
+
+.ProfileStats{
+    /* background-color: #294c64; */
+    /* padding: 10px; */
+    border-radius: 10px;
+    /* background: linear-gradient(to bottom, #112637, #294c64); */
+}
+
+.ProfileStatBox{
+    background-color: black;
+    color: white;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: fit-content;
+    flex: 1;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 -6px 20px rgba(255, 140, 0, 0.02) inset;
+    background: linear-gradient(to bottom, #294c64, #112637);
+    border: 2px solid #112637;
+}
+
+.ProfileStatBox2{
+    background-color: black;
+    color: white;
+    padding: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: fit-content;
+    border-radius: 10px;
+    flex: 1;
+    background: linear-gradient(to bottom, #294c64, #112637);
+    border: 2px solid #112637;
+}
+
+.ProfileStatImg{
+    width: 100%;
+    
+    height: 90px;
+   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 -6px 20px rgba(255, 140, 0, 0.02) inset;
+    /* background: linear-gradient(to bottom, #FF9800, #ffc411); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.ProfileStatImg2{
+    width: 100%;
+    
+    height: 46px;
+   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.6), 0 -6px 20px rgba(255, 140, 0, 0.02) inset;
+    /* background: linear-gradient(to bottom, #FF9800, #ffc411); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.orangeImg{
+background: linear-gradient(to bottom, #FF9800, #ffc411);
+}
+
+.blueImg{
+  background:  linear-gradient(to bottom, #6600ff, #b511ff);
+
+}
+
+.lightblueImg{
+        background: linear-gradient(to bottom, #0018ff, #11c5ff);
+
+}
+
+.lightGreenImg{
+    background: linear-gradient(to bottom, #4CAF50, #0ba684);
+
+}
+
+.redImg{
+    background: linear-gradient(to bottom, #ff0000, #cf0000);
+    color: white;
+}
+
+.ProfileStatText{
+    background-color: #112637;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 5px;
+    color: orange;
+    border: 1px solid orange;
+    background-color: #ffa50078;
+}
+
+.ProfileIcon2{
+    font-size: 80px !important;
+}
+
+.ProfileIcon3{
+    font-size: 20px !important;
+}
+
+.ProfileStatsWrapper{
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    display: flex;
+}
+.ProfileStatsWrapper2{
+    display: flex;
+    gap: 2px;
+    flex-wrap: wrap;
+    display: flex;
+    box-sizing: border-box;
+}
+
+.ProfileBadges{
+ 
+    margin-bottom: 10px;
+}
+
+.BadgesWrapper{
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+        height: 53vh;
+    overflow-y: scroll;
+}
+
+.flexCont{
+    flex:1;
+    padding : 4px;
+}
+
+.BadgeStats{
+padding: 4px;
+    background: #112637;
+    border-radius: 0px;
+    width: 98%;
+    box-sizing: border-box;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border: 1px solid #868073;    
+    font-variation-settings: "wdth" 70;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #ffeb3b6e;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 -6px 20px rgba(255, 140, 0, 0.02) inset;
+    /* margin-left: -55px; */
+    /* height: 15px; */
+    /* font-size: 14px; */
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    /* text-transform: uppercase; */
+    background: linear-gradient(to bottom right, #555 0%, #333 100%);
+}
+
+.checkBox{
+    color:lightgreen;
+    font-size:12px;
+}
+
+.hide{
+    opacity: 0;
+}
+
+.BadgeStats2{
+    padding: 2px;
+    background: #112637;
+    border-radius: 0px;
+    width: 98%;
+    box-sizing: border-box;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border: 1px solid #868073;    
+    font-variation-settings: "wdth" 70;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffeb3b6e;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 -6px 20px rgba(255, 140, 0, 0.02) inset;
+    /* margin-left: -55px; */
+    /* height: 15px; */
+    /* font-size: 14px; */
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    /* text-transform: uppercase; */
+    background: linear-gradient(to bottom right, #555 0%, #333 100%);
+}
+
+.ProfileRightUl{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 38vh;
+    overflow-y: scroll;
+}
+
+.txtSh{
+    text-shadow:0 4px 2px rgba(0, 0, 0, 15.1) !important;
+}

@@ -2,9 +2,10 @@ import React from 'react'
 import Groups2OutlinedIcon from '@mui/icons-material/Groups2Outlined';
 import GroupAddOutlinedIcon from '@mui/icons-material/GroupAddOutlined';
 import GroupRemoveOutlinedIcon from '@mui/icons-material/GroupRemoveOutlined';
-export default function PeopleLoader({type}) {
+import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
+export default function PeopleLoader({type,category='expert'}) {
   return (
-                <li className='expertTrackContainerListItem' >
+                <li className={`${category==='friend' ? 'expertTrackContainerListItemRight' : 'expertTrackContainerListItem'}`} >
                   <div className="expertTrackOwnerDetails">
                     <span className='expertTrackOwnerprofileImgLoader'></span>
 
@@ -16,16 +17,34 @@ export default function PeopleLoader({type}) {
                   <div className="expertTrackOwnerLeftDetails">
                       <div className="expertTrackOwnerLeftFollowers">
                             <Groups2OutlinedIcon/>
-                            0
+                            00
                        </div>
-                       {type === 'AllUser' ?
-                        <div className="expertTrackOwnerFollow">
+                     
+                       {
+                       
+                       category === 'expert' ? 
+                       (type === 'AllUser' ? <div className="expertTrackOwnerFollow">
                             <GroupAddOutlinedIcon/>     
                        </div>
                        :
                         <div className="expertTrackOwnerFollow">
                             <GroupRemoveOutlinedIcon/>      
-                       </div> 
+                       </div>)
+                       :
+                       (
+                      type === 'AllUser' || type == 'allPublicCommunity' || type == 'allPrivateCommunity' ? <div className="expertTrackOwnerFollow">
+                            <GroupAddOutlinedIcon/>
+                            {category === 'friend' && 'Request'}
+                            {type === 'AllUser' || type ==='allPublicCommunity' && 'Follow'}  
+                            {type === 'allPrivateCommunity' && 'Request'}   
+                       </div>
+                       :
+                        <div className="expertTrackOwnerFollow">
+                            <GroupRemoveOutlinedIcon/>
+                            Unfollow      
+                       </div>
+
+                       ) 
                       }
                   </div>
                 </li>

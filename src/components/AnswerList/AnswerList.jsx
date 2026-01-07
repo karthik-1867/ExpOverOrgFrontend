@@ -3,6 +3,7 @@ import TurnedInNotOutlinedIcon from '@mui/icons-material/TurnedInNotOutlined';
 import ArrowDropUpOutlinedIcon from '@mui/icons-material/ArrowDropUpOutlined';
 import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';
 import CommentList from '../CommentList/CommentList';
+import CodeEditor from '../CodeEditor/CodeEditor';
 
 export default function AnswerList ({data}){
     console.log("comment data",data)
@@ -27,12 +28,16 @@ export default function AnswerList ({data}){
                                 <div className="HomeQueryMidSectionAns">
                                         <div className="HomeQueryMidSectionLeft">
                                             <ArrowDropUpOutlinedIcon/>
-                                            {data.upvotes}
+                                            {data.upvoteCount}
                                             <ArrowDropDownOutlinedIcon/>
                                         </div>
                                         <div className="HomeQueryMidSectionRight">
-                                            
+                                      {data.code && <CodeEditor value={data.code}/>}
                                             <p className="HomeQueryMidSectionRightLongDesc">
+                                            <h className='HomeQueryMidSectionRightLongDescHeading'>                                                   
+                                                    Answer:
+                                            </h>
+                                     
                                                     {data.AnswerBody}
                                             </p>
 

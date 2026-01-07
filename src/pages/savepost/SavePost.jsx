@@ -140,7 +140,7 @@ export default function SavePost() {
     <div className="saveContainer">
         <div className="saveContainerLeftPanel" >
          
-               <div class="HomeRecommendedHeading">
+               <div className="HomeRecommendedHeading">
                     <FolderOpenOutlinedIcon/>
                     Folders
                </div>
@@ -172,10 +172,10 @@ export default function SavePost() {
                <>
                     <div className={`savedQuestionPost ${(expandPost && expandPostType=='openLink') && 'hidden'}`} >
                               <div className="SaveHeadingWrapper" onClick={()=>handleExpandPost('saved')}>
-                                   <div class="HomeRecommendedHeading2"><FeaturedPlayListOutlinedIcon />
+                                   <div className="HomeRecommendedHeading2"><FeaturedPlayListOutlinedIcon />
                                    Saved
                                    </div>
-                                   <div class="expertTrackOwnerFollow"><OpenInFullOutlinedIcon/></div>
+                                   <div className="expertTrackOwnerFollow"><OpenInFullOutlinedIcon/></div>
                               </div>
                          <div className="savedPostSection">
                               {
@@ -204,8 +204,8 @@ export default function SavePost() {
                     <div className={`saveOpenLink ${(expandPost && expandPostType=='saved') && 'hidden'}`}>
                         
                         <div className="SaveHeadingWrapper" onClick={()=>handleExpandPost('openLink')}>
-                         <div class="HomeRecommendedHeading2"><FeaturedPlayListOutlinedIcon/>Open links</div>
-                          <div class="expertTrackOwnerFollow"><OpenInFullOutlinedIcon/></div>
+                         <div className="HomeRecommendedHeading2"><FeaturedPlayListOutlinedIcon/>Open links</div>
+                          <div className="expertTrackOwnerFollow"><OpenInFullOutlinedIcon/></div>
                         </div>
                         
                         

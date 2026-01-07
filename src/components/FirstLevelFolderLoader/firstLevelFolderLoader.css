@@ -1,8 +1,9 @@
 .expertTrackOwnerprofileImgLoader{
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 10px;
     background-color: #112637;
+    
     border: 2px solid #294c64;
         padding: 3px;
     border: 2px solid orange;

@@ -8,10 +8,13 @@ import axios from 'axios';
 import Dropzone from '../../components/Dropzone/Dropzone';
 import CreateFolder from '../../components/CreateFolder/CreateFolder';
 import OpenInFullOutlinedIcon from '@mui/icons-material/OpenInFullOutlined';
+import FirstLevelFolderLoader from '../../components/FirstLevelFolderLoader/FirstLevelFolderLoader';
+import SaveQuestionItemLoader from '../../components/SaveQuestionItemsLoader/SaveQuestionItemLoader';
 
 export default function SubFolder() {
     const [folders,setFolders] = useState("");
     const [activeCard,setActiveCard] = useState("");
+    const [loading,setLoading] = useState(false);
 
       const [drop,setDrop] = useState("");
       const [openDropzone,setOpenDropZone] = useState(false);
@@ -20,8 +23,8 @@ export default function SubFolder() {
     
     const [question,setQuestion] = useState("");
     const [openLink,setOpenLink] = useState("");
-       const { breadCrumbList,setBreadCrumbList,breadCrumbUpdate,createFolder,setCreateFolder,setFolderId,folderId,prevId,setPrevId } = useOutletContext();
-
+     const { breadCrumbList,setBreadCrumbList,breadCrumbUpdate,createFolder,setCreateFolder,setFolderId,folderId,prevId,setPrevId } = useOutletContext();
+     const arr = Array(50).fill().map((_, i) => i);
 
     const navigate = useNavigate()
  
@@ -33,6 +36,7 @@ export default function SubFolder() {
 
                   setQuestion([])
                   setOpenLink([])
+                  setLoading(true);
                   let question;
                   const folder = await axios.get(`${process.env.REACT_APP_URL}/save/getFolderAttachedId/${id.id}`,{withCredentials:true})                
                   console.log("folder data",folder.data)
@@ -67,6 +71,7 @@ export default function SubFolder() {
                   setFolders(folder.data)
                   
                   setOpenLink(openLink.data);
+                  setLoading(false);
 
             }catch(e){
                 console.log(e)
@@ -80,7 +85,7 @@ export default function SubFolder() {
     const handleFolderId = async(id) => {
       const question = await axios.get(`${process.env.REACT_APP_URL}/save/getSavedQuestionsInFolder/${id}`,{withCredentials:true})
       setQuestion(question.data);
-             if(question.data.length===0){
+      if(question.data.length===0){
           setOpenDropZone(true)
         }else{
           setOpenDropZone(false)
@@ -155,9 +160,15 @@ export default function SubFolder() {
 
                <div className="saveContainerList">
                   <ul className='expertTrackContainerLists'>
-                 {folders.length>0 && folders?.map((item)=>(
+                 {loading === false && folders.length>0 && folders?.map((item)=>(
                    <FirstLevelFolder key={item.id} data={item} handleFolderId={handleFolderId} setBreadCrumbList={setBreadCrumbList} folderId={folderId} setPrevId={setPrevId}/>
                  ))}
+                  {
+                        loading == true &&
+                        arr.map((i)=>
+                        (<FirstLevelFolderLoader/>)
+                        )
+                  }
                   </ul>
                </div>
            </div>
@@ -177,10 +188,19 @@ export default function SubFolder() {
                               
                               openDropzone ?
                               <Dropzone activeCard={activeCard} setOpenLink={setOpenLink} folderId={folderId} setOpenDropZone={setOpenDropZone} handleQuestionFolderUpdate={handleQuestionFolderUpdate} setActiveCard={setActiveCard}/>:
-                              (question.length > 0 && question?.map((item)=>(
+                              (loading == false ? question.length > 0 && question?.map((item)=>(
 
                                    <SavedQuestionItems key={item._id} data={item} type="saved" setActiveCard={setActiveCard} />
-                              )))
+                                   
+                              )
+                         
+                                 )
+                                 :
+                                 arr.map((i)=>
+                                      <SaveQuestionItemLoader/>
+                                )
+                              
+                              )
                               }
                               
                               
@@ -194,11 +214,15 @@ export default function SubFolder() {
                         </div>
                   <div className="savedPostSection">
                        
-                       {openLink.length > 0 && openLink?.map((item)=>(
+                       {loading === false && openLink.length > 0 && openLink?.map((item)=>(
    
                             <SavedQuestionItems key={item._id} data={item} type="save" setActiveCard={setActiveCard} handleSave={handleSave}/>
                        ))
                        }
+                      {loading==true && arr.map((i)=>
+                      (<SaveQuestionItemLoader/>)
+                      )    
+                      }
                   </div>
               </div>
               </>:

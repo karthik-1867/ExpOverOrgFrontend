@@ -3,9 +3,10 @@ import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
 import EmojiObjectsOutlinedIcon from '@mui/icons-material/EmojiObjectsOutlined';
 import ConnectWithoutContactOutlinedIcon from '@mui/icons-material/ConnectWithoutContactOutlined';
 import SwipeRightOutlinedIcon from '@mui/icons-material/SwipeRightOutlined';
+import ImportContactsOutlinedIcon from '@mui/icons-material/ImportContactsOutlined';
 
-import QuestionAnswerOutlinedIcon from '@mui/icons-material/QuestionAnswerOutlined';
 import TurnedInNotOutlinedIcon from '@mui/icons-material/TurnedInNotOutlined';
+import QuestionAnswerOutlinedIcon from '@mui/icons-material/QuestionAnswerOutlined';
 import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -39,6 +40,10 @@ export default function SavedQuestionItems({data,type,setActiveCard,setOpenDropZ
                                                   <p className='HomeQueryMidSectionRightShortDesc'>{data.savedquestionId.QuestionTitle}</p>
                                                   {data.savedquestionId.code && <CodeEditor value={data.savedquestionId.code}/>}
                                                   <p className="HomeQueryMidSectionRightLongDesc">
+                                                                       <h className='HomeQueryMidSectionRightLongDescHeading' >
+                                                            <QuestionAnswerOutlinedIcon/>
+                                                            Problem Description:
+                                                            </h>
                                                         {data.savedquestionId.QuestionBody}
                                                   </p>
         

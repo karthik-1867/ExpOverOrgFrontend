@@ -5,7 +5,7 @@ export default function FirstLevelFolderLoader() {
   return (
                 <li 
               
-              className={`expertTrackContainerListItem`} 
+              className={`expertTrackContainerListItemRight`} 
               
             >
                   <div className="expertTrackOwnerDetails">

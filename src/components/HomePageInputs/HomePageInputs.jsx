@@ -70,32 +70,7 @@ export default function HomePageInputs() {
 
   return (
              <div className="HomeQuery">
-                  <div className="HomeQueryHeading">
 
-                        <div className="HomeQueryNameAndImg">
-                              <img src="https://cdn.pixabay.com/photo/2024/05/26/10/15/bird-8788491_1280.jpg" alt="" className='HomeQueryImgProfile'/>
-                              <div className="HomeQueryNameSection">
-
-                                 Karthik
-                                 <span className='HomeQueryDesign'>Software engineer</span>
-                              </div>
-                        </div>
-                        <div className="HomeContriButionAndFollowers">
-
-                              <div className="HomeUrFollower">
-                                    <GroupOutlinedIcon/>
-                                    Follower : 300
-                              </div>
-                              <div className="HomeUrContribution">
-                                    <EmojiObjectsOutlinedIcon/>
-                                    Solution contributed : 20
-                              </div>
-                              <div className="HomeUrFriend">
-                                    <ConnectWithoutContactOutlinedIcon/>
-                                    Friend : 30
-                              </div>
-                        </div>
-                  </div>
                   <div className="HomeQueryTextInputs">
                        <form className="HomeQueryTextInputsWrapper" onSubmit={handleSubmit}>
                         <label className='HomeQueryShortDesc'>
@@ -124,21 +99,14 @@ export default function HomePageInputs() {
                        <textarea
                         id="myTextarea"
                         class="textbox"
-                        rows="7"
+                        rows="12"
                         cols="30"
                         name='QuestionBody'  
                         placeholder="Full Description of problem statement…"
                         value={inputs.QuestionBody}
                         onChange={e => handleInput(e)}
                         ></textarea>
-                        <div className="HomeQueryInfo">
-                           <InfoOutlinedIcon/>
-                           If category of question described does'nt exist. U can create ur own category but it would be reviewed first. You can click right button to create
-                           <button className='HomeQueryCategoryCreate'>
-                              Create category
-                           </button>
-                            
-                        </div>
+
                          <button type="submit" className='HomeQueryCategoryCreate' style={{background: "linear-gradient(to bottom, #62ff12, #007600)",border: "1px solid #62ff12",color:'white'}}>
                              Sumbit
                          </button>

@@ -23,6 +23,14 @@ import IntroDetails from "./components/IntroDetails/IntroDetails";
 import AttachedFolder from "./pages/attachedFolder/AttachedFolder";
 import SubFolder from "./pages/SubFolders/SubFolder";
 import SaveSection from "./pages/SaveSection/SaveSection";
+import PostKnowledge from "./components/PostKnowledge/PostKnowledge";
+import Notification from "./pages/Notification/Notification";
+import NotificationMessage from "./components/NotificationMessage/NotificationMessage";
+import NotificationManager from "./components/NotificationManager/NotificationManager";
+import NotificationFollowup from "./components/NotificationFollowup/NotificationFollowup";
+import Profile from "./pages/profile/Profile";
+import IntroDetailCommunity from "./components/IntroDetailCommunity/IntroDetailCommunity";
+import SaveTypeSelect from "./pages/SaveTypeSelect/SaveTypeSelect";
 
 function App() {
   const [page,setPage] = useState('home');
@@ -45,13 +53,15 @@ function App() {
                         <Route path="inputs" element={<HomePageInputs />} />{/* at /home/profile */}
                         <Route path="questions" element={<HomePageQuestionSection  type='question'/>} />{/* /home/settings */}
                         <Route path="urQuestions" element={<HomePageQuestionSection type='urQuestions'/>} />
+                        <Route path="tokenSearch" element={<HomePageQuestionSection type='tokenSearch'/>}/>
                         <Route path="expertquestions" element={<HomePageQuestionSection type='expertquestions'/>} />
                         <Route path="friendquestions" element={<HomePageQuestionSection type='friendquestions'/>} />
                        <Route path="answer/:id" element={<HomePageAnsSect />} />
                   </Route>
                   
                   <Route path="/saveSection" element={<SaveSection/>}>
-                       <Route index path="save" element={<SavePost />} />
+                      <Route index path="selectType" element={<SaveTypeSelect/>}/>
+                       <Route path="save" element={<SavePost />} />
                        <Route path="subFolder/:id" element={<SubFolder />} /> 
                   </Route>
 
@@ -60,7 +70,7 @@ function App() {
                       <Route index path="questions/:id" element={<HomePageQuestionSection  type='questionByExpert'/>} />
                       <Route path="answer/:id" element={<ExpertPageAnsSection />} />
                       <Route path="clickedAnswer/:id" element={<HomePageAnsSect type='answerByQuestion'/>} />
-                      <Route path="knowledge/:id" element={<Knowledge type='expertTrack'/>}/> 
+                      <Route path="knowledge/:id" element={<Knowledge type='expertTrack' />}/> 
                       <Route path="introDetail/:id" element={<IntroDetails/>}/>
 
                   </Route>
@@ -77,9 +87,21 @@ function App() {
                   <Route path="/community" element={<Community />} >
                        <Route index path="communityKnowledge/:id" element={<Knowledge type='community'/>} />
                        <Route index path="createCommunity" element={<CreateCommunity/>} />
-                       <Route index path="inviteStatus" element={<FriendinviteStatus/>} />
+                       <Route index path="inviteStatus" element={<CommunityInviteStatus/>} />
+                       <Route index path='postKnowledge/:id/:type' element={<PostKnowledge/>}/>
+                       <Route index path='introdetailCommuinity/:communityId' element={<IntroDetailCommunity/>}/>
                        <Route index path="individualKnowledge/:communityId/:id" element={<Knowledge type='singleUserKnowledge'/>} />
                         
+                  </Route>
+                  <Route path="/Notification" element={<Notification />} >
+                        <Route index path="Messages" element={<NotificationMessage/>} />
+                         <Route path="Manager" element={<NotificationManager/>} />
+                         <Route path="Followups" element={<NotificationFollowup/>} >
+                             <Route index path=":id" element={<HomePageAnsSect/>} />
+                         </Route>
+                  </Route>
+                  <Route path="/profile" element={<Profile/>}>
+                  
                   </Route>
                  </Routes>
               

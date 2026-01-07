@@ -5,7 +5,9 @@ import SwipeRightOutlinedIcon from '@mui/icons-material/SwipeRightOutlined';
 
 import QuestionAnswerOutlinedIcon from '@mui/icons-material/QuestionAnswerOutlined';
 import TurnedInNotOutlinedIcon from '@mui/icons-material/TurnedInNotOutlined';
-import { NavLink } from 'react-router-dom';
+import UpdateOutlinedIcon from '@mui/icons-material/UpdateOutlined';
+
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import CodeEditor from '../CodeEditor/CodeEditor';
@@ -13,6 +15,10 @@ import CodeEditor from '../CodeEditor/CodeEditor';
 export default function HomeQueryPostItems({data, type}){
 
     console.log("trypes",type,data)
+    const [save,setSave] = useState(false)
+    const [followup,setFollowup] = useState(false)
+
+    const navigate = useNavigate()
 
     const getRoute = () => {
         switch(type) {
@@ -24,13 +30,37 @@ export default function HomeQueryPostItems({data, type}){
             default:
                 return `/allpost/answer/${data._id}`;
         }
+
     };
+
+    const handleSave = async(e) => {
+      e.preventDefault();
+      e.stopPropagation()
+      if(save===false){
+            setSave(true)
+            console.log("saving question",data)
+           await axios.post(`${process.env.REACT_APP_URL}/save/saveContentController/question/${data._id}`,{},{withCredentials:true})
+      }else{
+           setSave(false)
+      }
+    }
+
+    const handleFollowup = async(e) => {
+      e.preventDefault()
+      e.stopPropagation()
+      if(followup===false){
+            setFollowup(true)
+            await axios.post(`${process.env.REACT_APP_URL}/followupMessages/followup/${data._id}`,{},{withCredentials:true})
+      }else{
+            setFollowup(false)
+      }
+    }
     
     return(
-            <NavLink to={getRoute()} style={{textDecoration:'none'}}>
+            // <NavLink to={getRoute()} style={{textDecoration:'none'}}>
 
        
-                                <div className="HomeQueryPost">
+                                <div className="HomeQueryPost" onClick={()=>navigate(getRoute())}>
                                       <div className="HomeQueryTopSection">
                                             <div className="HomeQueryTopSectionProfileAndImg">
                                                 <img src={data.userId.profilePicture} alt="" className='HomeQueryTopSectionImg'/>
@@ -65,6 +95,11 @@ export default function HomeQueryPostItems({data, type}){
                                                   <p className='HomeQueryMidSectionRightShortDesc'>{data.QuestionTitle}</p>
                                                   {data.code!='' && <CodeEditor value={data.code}/>}
                                                   <p className="HomeQueryMidSectionRightLongDesc">
+                                                        <h className='HomeQueryMidSectionRightLongDescHeading'>
+                                                            <QuestionAnswerOutlinedIcon/>
+                                                            Problem Description:
+                                                            </h>
+                                                       
                                                         {data.QuestionBody}
                                                   </p>
         
@@ -83,15 +118,33 @@ export default function HomeQueryPostItems({data, type}){
                                                                     Answered by : {data.answers}
                                                               </div>
                                                         </div>
-                                                        <div className="HomeQueryEndSectionRight">
-                                                              <TurnedInNotOutlinedIcon/>
-                                                              Save question
+                                                        <div className="HomeQueryEndSectionRightContainer">
+
+                                                            <div className="HomeQueryEndSectionRight" onClick={(e)=>handleSave(e)}>
+                                                                  <TurnedInNotOutlinedIcon/>
+                                                                  {
+                                                                        (data?.saved?.length>0 || save) ?
+                                                                        'Saved'
+                                                                        :
+                                                                        'Save question'
+                                                                  }
+                                                            </div>
+                                                            <div className="HomeQueryEndSectionRight" onClick={(e)=>handleFollowup(e)}>
+                                                                  <UpdateOutlinedIcon/>
+                                                                  {
+                                                                        (data?.followup?.length>0 || followup) ? 
+                                                                        'Following'
+                                                                        :
+                                                                        'Follow up'
+                                                                  }
+                                                            </div>
                                                         </div>
+                                                        
                                                   </div>
                                             </div>
                                       </div>
         
                                 </div>
-            </NavLink>
+            // </NavLink>
     )
 }

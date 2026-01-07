@@ -133,7 +133,7 @@ export default function FriendinviteStatus() {
 
             <ul className='expertTrackContainerLists'>
                 {alluser.length>0 && alluser.map((user)=>(
-                    <FriendsItems key={user.id} data={user} setId={setId} type={type} handleAccept={handleAccept}/>
+                    <FriendsItems key={user.id} id={id} data={user} setId={setId} type={type} handleAccept={handleAccept}/>
                 ))}
                 {
                     (alluser.length==0 && loading==true) &&

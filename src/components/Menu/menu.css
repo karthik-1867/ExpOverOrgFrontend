@@ -8,6 +8,8 @@
     padding-top: 20px;
 }
 
+
+
 .MenuItems{
     margin: 0;
     padding: 0;
@@ -20,14 +22,16 @@
     align-items: center;
     gap: 3px;
     color: orange;
+    color:#d5d0d0;
     font-size: 13px;
-    border-left: 1px solid orange;
+    /* border-left: 1px solid orange; */
     border-radius: 4px;
     font-weight: bold;
     text-decoration: none;
 }
 .Active{
     background-color: orange;
+    background-color: red;
     color: white;
     transition: all 0.3s;
 }

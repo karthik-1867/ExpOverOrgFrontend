@@ -1,0 +1,39 @@
+.ExpertiseContainer{
+    width: 100%;
+    background-color: #294c64;
+    background: linear-gradient(to bottom, #294c64, #112637);
+    border: 2px solid #294c64;
+    background: #8a2be23b;
+    padding: 10px;
+    font-variation-settings: "wdth" 70;
+
+     box-sizing: border-box;
+     display: flex;
+     gap:6px;
+     align-items: center;
+     color: white;
+}
+
+.ExpertiseContainerImg{
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    object-fit: cover;
+    padding: 5px;
+    border: 2px solid orange;
+    background-color: black;
+}
+
+.ExpertiseTextAndCount{
+    display: flex;
+    flex-direction: column;
+}
+
+.ExpertiseCount{
+    font-weight: bold;
+    font-size: 10px;
+    padding: 4px;
+background: #694809c4;
+    border-radius: 5px;
+    color: orange;
+}

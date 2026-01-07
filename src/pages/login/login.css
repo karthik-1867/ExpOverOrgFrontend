@@ -16,6 +16,23 @@
     border-radius: 10px;
 }
 
+.LoginContainer2 {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background: #36454f;
+    background: linear-gradient(to bottom, #294c64, #112637);
+    border: 2px solid #294c64;
+    background-blend-mode: screen, normal;
+    color: #fff;
+    overflow: hidden;
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
 
 
 
@@ -39,6 +56,20 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 -6px 20px rgba(255, 140, 0, 0.02) inset;
     background:  #112637;
     border: 3px solid #294c64;
+    backdrop-filter: blur(4px);
+}
+
+.LoginForm2{
+    width: 70%;
+
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.52); /* semi-transparent to show background glow */
+    border-radius: 12px;
+    border: 1px solid rgba(255, 140, 0, 0.06);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 -6px 20px rgba(255, 140, 0, 0.02) inset;
+    background:  #112637;
+    border: 3px solid #294c64;
+    box-sizing: border-box;
     backdrop-filter: blur(4px);
 }
 
@@ -104,4 +135,10 @@
 .SignupHighLight{
     color: orange;
     font-weight: bold;
+}
+
+.LogoContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }

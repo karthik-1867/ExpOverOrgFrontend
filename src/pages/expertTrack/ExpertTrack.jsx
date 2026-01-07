@@ -13,9 +13,13 @@ import axios from 'axios';
 import PeopleLoader from '../../components/PeopleLoader/PeopleLoader';
 import Nodata from '../../components/Nodata/Nodata';
 import HomeQueryPostItemsLoader from '../../components/HomequerypostItemsLoader/HomeQueryPostItemsLoader';
+import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
+import EmojiObjectsOutlinedIcon from '@mui/icons-material/EmojiObjectsOutlined';
+import ConnectWithoutContactOutlinedIcon from '@mui/icons-material/ConnectWithoutContactOutlined';
 
 export default function ExpertTrack() {
   const [type,SetType] = useState('AllUser');
+   const [communityType, setCommunityType] = useState('public');
   const [loading,setLoading] = useState(false);
   const [section,setSection] = useState('questions')
   const [tab,setTab] = useState(false);
@@ -23,7 +27,7 @@ export default function ExpertTrack() {
   const [alluser,setAllUser] = useState([]);
   const [id,setId] = useState(); 
   const navigate = useNavigate();
-
+  const [searchTokenSelected,setSearchTokenSelected] = useState({selected:'false',data:{}})
 
   console.log("alluser",alluser)
   console.log("setid",id)
@@ -49,7 +53,9 @@ export default function ExpertTrack() {
                     navigate(`/expertTrack/questions/loading`);
                     const user = await axios.get(`${process.env.REACT_APP_URL}/expert/getFollowedExperts`,{withCredentials:true})
                     // getExpertsList returns array of expert documents with populated expertId field
-                    const users = user.data.map(expert => expert.expertId)
+                    const users = user.data.map(expert => {
+                         return {...expert.expertId,upvoteCount:expert.upvoteCount,downvoteCount:expert.downvoteCount,count:expert.count}
+                    })
                     navigate(`/expertTrack/questions/${users[0]?._id}`);
                     setTab(true)
                     setSection('questions')
@@ -104,18 +110,22 @@ export default function ExpertTrack() {
        <div className="expertTrackcontainerLeft">
               <div className="expertTrackContainerLeftButtons">
                   <button className={`expertTrackContainerLeftButton ${type === 'AllUser' && 'ActiveButton'}`} onClick={leftButtonSection}>
+                
                        <PeopleAltOutlinedIcon/>
+                   
                        All user   
                   </button>
                   <button className={`expertTrackContainerLeftButton ${type === 'Expert' && 'ActiveButton'}`} onClick={()=>SetType('Expert')}>
+                       
                        <ContactPageOutlinedIcon/>
+             
                        Followed Expert
                   </button>
               </div>
               <ul className='expertTrackContainerLists2'>
                    {alluser?.map((user)=>(
                       <>
-                       <ExpertTrackListItems key={user._id} data={user} setId={setId} section={section} api={api} type={type} handleFollow={handleFollow}/>
+                       <ExpertTrackListItems key={user._id} data={user} setId={setId} id={id} section={section} api={api} type={type} handleFollow={handleFollow}/>
                       
                        </>
                     ))
@@ -124,7 +134,7 @@ export default function ExpertTrack() {
                      loading==true &&
                      
                        arr.map((i)=>
-                        (<PeopleLoader type={type}/>)
+                        (<PeopleLoader type={type} category='expert'/>)
                        )
                         
                        
@@ -136,7 +146,7 @@ export default function ExpertTrack() {
        </div>
        {type==='AllUser' ? 
          <div className="expertTrackContainerRight">
-           <Outlet/>
+           <Outlet context={{communityType,searchTokenSelected}}/>
            
          </div>
          :
@@ -156,19 +166,46 @@ export default function ExpertTrack() {
                   </NavLink>
               </div>
               <div className="expertTrackContainerRightContent">
-                 {alluser.length!=0&&<Outlet/>}
+                 {alluser.length!=0&&<Outlet  context={{communityType,searchTokenSelected}}/>}
                  {(alluser.length === 0 && loading === false)
                     ? <Nodata type='right' message='No data as u following 0 experts'/>
                     : 
                     loading === true 
                     ?
-                    
+                                                                             <div className="HomeQuery">
+                                                                      <div className="HomeQueryHeading">
+
+                                                                           <div className="HomeQueryNameAndImg">
+                                                                                     <img src="https://cdn.pixabay.com/photo/2024/05/26/10/15/bird-8788491_1280.jpg" alt="" className='HomeQueryImgProfile'/>
+                                                                                     <div className="HomeQueryNameSection">
+
+                                                                                     Karthik
+                                                                                     <span className='HomeQueryDesign'>Software engineer</span>
+                                                                                     </div>
+                                                                           </div>
+                                                                           <div className="HomeContriButionAndFollowers">
+
+                                                                                     <div className="HomeUrFollower">
+                                                                                          <GroupOutlinedIcon/>
+                                                                                          Follower : 300
+                                                                                     </div>
+                                                                                     <div className="HomeUrContribution">
+                                                                                          <EmojiObjectsOutlinedIcon/>
+                                                                                          Solution contributed : 20
+                                                                                     </div>
+                                                                                     <div className="HomeUrFriend">
+                                                                                          <ConnectWithoutContactOutlinedIcon/>
+                                                                                          Friend : 30
+                                                                                     </div>
+                                                                           </div>
+                                                                      </div>
                     <div className="HomeQueryPostSection">
                          {       
                               arr.map((i)=>
                               (<HomeQueryPostItemsLoader/>)
                               )
                          }
+                    </div>
                     </div>
                     :
                     <></>

@@ -39,7 +39,9 @@ export default function CodeEditor({ language = 'js', value=""
       extensions={[ basicSetup, langExt,EditorView.lineWrapping, ]}
       onChange={onChange}
       theme={tomorrowNightBlue}
-      height="fit-content"
+      height={value===''?'100px' :'fit-content'}
+      style={{border: value===''? '1px solid white' : '',boxShadow:'0 2px 6px rgb(0 0 0), 0 -6px 20px rgba(255, 140, 0, 0.02) inset'
+      ,backdropFilter: 'blur(4px)'}}
       
      
       

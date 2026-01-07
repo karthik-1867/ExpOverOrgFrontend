@@ -11,19 +11,27 @@ import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import AnswerList from '../AnswerList/AnswerList';
+import HomeQueryPostItemsLoader from '../HomequerypostItemsLoader/HomeQueryPostItemsLoader';
+import Nodata from '../Nodata/Nodata';
 export default function HomePageAnsSect() {
       const [ans,setAns] = useState("");
       const [question,setQuestion] = useState("")
+      const [loading,setLoading] = useState(false)
       const id = useParams();
-      
+       const arr = Array(10).fill().map((_, i) => i);
       console.log("ans",ans)
       console.log("question",question)
       useEffect(()=>{
             const answer = async() => {
                   try{
+                       setLoading(true)
                        const ans = await axios.get(`${process.env.REACT_APP_URL}/answer/getAnswersByQuestionId/${id.id}`,{withCredentials:true})
                        setAns(ans.data)
-                       setQuestion(ans.data[0].questionId)
+
+                       
+
+                       setQuestion(ans?.data[0]?.questionId)
+                       setLoading(false)
                   }catch(e){
                        console.log(e)
                   }
@@ -36,7 +44,7 @@ export default function HomePageAnsSect() {
       return (
                      <div className="HomeQueryAndAns">
                        
-                        <div className="HomeQueryAndAnsPost">
+                       { !loading && ans.length>0 && <div className="HomeQueryAndAnsPost">
                               <div className="HomeQueryTopSection">
                                     <div className="HomeQueryTopSectionProfileAndImg">
                                     <img src={question.QuestionProfileImg} alt="" className='HomeQueryTopSectionImg'/>
@@ -70,6 +78,9 @@ export default function HomePageAnsSect() {
                                     <div className="HomeQueryMidSectionRight">
                                           <p className='HomeQueryMidSectionRightShortDesc'>Q {question.QuestionTitle}</p>
                                           <p className="HomeQueryMidSectionRightLongDesc">
+                                           <h className='HomeQueryMidSectionRightLongDescHeading'>                                                   
+                                                    Question Description:
+                                            </h>
                                                 {question.QuestionBody}
                                           </p>
 
@@ -97,11 +108,20 @@ export default function HomePageAnsSect() {
                               </div>
 
                         </div>                     
-                        
+                       }
                         <div className="HomeQueryAnsSection">
-                              { ans.length > 0 && ans?.map((item)=>(
+                              { !loading && ans.length > 0 && ans?.map((item)=>(
                                     <AnswerList key={item._id} data={item}/>
                               ))}
+                             { !loading && ans.length == 0 &&
+                                    <Nodata type='left' message='No update'/>
+                              }
+
+                              {       
+                                    loading === true && arr.map((i)=>
+                                    (<HomeQueryPostItemsLoader/>)
+                                    )
+                             }
                               {/* <div className="HomeAnsPost">
                                     <div className="HomeQueryTopSection">
                                           <div className="HomeQueryTopSectionProfileAndImg">

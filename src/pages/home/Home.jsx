@@ -11,6 +11,8 @@ import EmojiObjectsOutlinedIcon from '@mui/icons-material/EmojiObjectsOutlined';
 import ConnectWithoutContactOutlinedIcon from '@mui/icons-material/ConnectWithoutContactOutlined';
 
 
+import ForumIcon from '@mui/icons-material/Forum';
+
 import FeaturedPlayListOutlinedIcon from '@mui/icons-material/FeaturedPlayListOutlined';
 import SwipeRightOutlinedIcon from '@mui/icons-material/SwipeRightOutlined';
 
@@ -23,22 +25,36 @@ import HomePageQuestionSection from '../../components/HomePageQuestionSection/Ho
 import HomePageAnsSect from '../../components/HomePageAnsSection/HomePageAnsSect';
 import { NavLink,Outlet } from 'react-router-dom';
 import axios from 'axios';
+import HomeSearchToken from '../../components/HomeSearchToken/HomeSearchToken';
 
 
 
 export default function Home() {
   const [tab,setTab] = useState(true);
+  const [searchTokenSelected,setSearchTokenSelected] = useState({selected:'false',data:{}})
+  const [token,setToken] = useState([])
 
 
   const handleAllPost = async() =>{
     try{
         const user = await axios.get(`${process.env.REACT_APP_URL}/user/getAllUser`,{withCredentials:true})
+        setSearchTokenSelected({selected:'false',data:{}})
         console.log(user);
-        setTab(false)
+        setTab(false);
+      
       }catch(e){
        console.log(e);
     }
   }
+
+  useEffect(()=>{
+     const getToken = async() => {
+         const token = await axios.get(`${process.env.REACT_APP_URL}/search/searchResults`,{withCredentials:true})
+         setToken(token.data);
+     }
+
+     getToken()
+  },[])
 
   
 
@@ -72,14 +88,14 @@ export default function Home() {
             {/* {tab === 'question' && <HomePageInputs/>}
             {tab === 'all post' &&<HomePageQuestionSection/>}
             <HomePageAnsSect/> */}
-            <Outlet/>
+            <Outlet context={{searchTokenSelected}} />
             
             
                  
         </div>
 
         <div className="HomeRecommendWrapper">
-        <div className="HomeRecommended">
+        {/* <div className="HomeRecommended">
             <div className="HomeRecommendedHeading">
                   <FeaturedPlayListOutlinedIcon/>
                   Recommended
@@ -196,7 +212,51 @@ export default function Home() {
                   
                          
             </div>
-        </div>
+        </div> */}
+                    <div className="HomeButtons" style={{display:'flex'}}>
+                  
+                        <div className='HomeButton ActiveButton' style={{flex:1}}>
+                          <HelpRoundedIcon />
+                          Search token
+                        </div>
+               
+                        <div className='HomeButton' style={{flex:1}}>
+                              <DynamicFeedOutlinedIcon/>
+                              Recommended
+                      </div>
+
+                </div>
+
+                <div className="HomeSearchToken">
+                  <div className="chooseBox" style={{display:'flex',gap:'5px'}}>
+                      <button className={'All'}  style={{fontSize:'11px',display:'flex',gap:'3px'}}>
+                          <ConnectWithoutContactOutlinedIcon/>
+                          Search tokens
+                        </button>
+                      <button className={'unSelected'} style={{fontSize:'11px',display:'flex'}}>
+                          <ContactPageOutlinedIcon/>
+                          Failed tokens
+                        </button>
+                        <button className={'unSelected'}   style={{fontSize:'11px',display:'flex'}}>
+                          <ForumIcon/>
+                          Token status
+                        </button>
+                </div>
+                <div className="HomeSearchCreateToken">
+                   <input placeholder='Enter Token name' className='HomeSearchCreateTokenName'/>
+                   <div className="HomeSearchCreateTokenButton">
+                     Create token
+                   </div>
+                </div>
+                <div className="TokenWrapper">
+                  {
+                     token?.map((i)=>(
+                        <HomeSearchToken data={i} key={i._id} setSearchTokenSelected={setSearchTokenSelected}/>
+                     ))
+                  }
+                </div>
+
+                </div>
         </div>
 
     </div>

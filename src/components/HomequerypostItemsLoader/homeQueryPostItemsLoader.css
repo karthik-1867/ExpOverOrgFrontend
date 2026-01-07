@@ -1,8 +1,11 @@
 .HomeQueryTopSectionImgLoader{
     width:30px;
     height:30px;
-    border-radius:50%;
-   background-color: #112637;
+
+       border-radius: 10px;
+    border: 2px solid orange;
+    padding: 3px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 -6px 20px rgba(255, 140, 0, 0.02) inset;
     animation: loaderAnimation 1.5s infinite;   
 }
 
