@@ -11,6 +11,7 @@ import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 import ThumbUpAltOutlinedIcon from '@mui/icons-material/ThumbUpAltOutlined';
 import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
+import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 // import BadgesBig from '../../components/BadgesBig/BadgesBig';
  import "../../components/BadgesBig/BadgesBig.css"
 
@@ -169,7 +170,7 @@ export default function Profile() {
         </div>
         <div className="ProfileRight">
           <div className="ProfileRightUBox">
-           <label class="HomeQueryShortDesc" style={{marginBottom:'10px'}}><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="DescriptionOutlinedIcon"><path d="M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8zm4 18H6V4h7v5h5z"></path></svg>language expertise</label>
+           <label class="HomeQueryShortDesc" style={{marginBottom:'10px'}}><DescriptionOutlinedIcon/>language expertise</label>
            <ul className='ProfileRightUl'>
                {category.map((i)=>(
                  <ExpertiseList data={i} key={i.id}/>
@@ -179,7 +180,7 @@ export default function Profile() {
           </div>
                       
           <div className="ProfileRightUBox">
-            <label class="HomeQueryShortDesc" style={{marginBottom:'10px'}}><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="DescriptionOutlinedIcon"><path d="M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8zm4 18H6V4h7v5h5z"></path></svg>Your choice</label>
+            <label class="HomeQueryShortDesc" style={{marginBottom:'10px'}}><DescriptionOutlinedIcon/>Your choice</label>
             <ul className='ProfileRightUl'>
                
                { urCategory.map((i)=>(
@@ -195,7 +196,7 @@ export default function Profile() {
         <div className="ProfileMid">
             <div className="ProfileBadges">
                 {/* <h1 className='ProfileHeading'>Badges</h1> */}
-                <label class="HomeQueryShortDesc" style={{marginBottom:'10px'}}><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="DescriptionOutlinedIcon"><path d="M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8zm4 18H6V4h7v5h5z"></path></svg>Badge</label>
+                <label class="HomeQueryShortDesc" style={{marginBottom:'10px'}}><DescriptionOutlinedIcon/>Badge</label>
 
                    <div className="BadgesWrapper">
 
@@ -266,7 +267,7 @@ export default function Profile() {
             </div>
             <div className="ProfileStats">
                 {/* <h1 className='ProfileHeading'>Stats</h1> */}
-                <label class="HomeQueryShortDesc" style={{marginBottom:'10px'}}><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="DescriptionOutlinedIcon"><path d="M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8zm4 18H6V4h7v5h5z"></path></svg>Stats</label>
+                <label class="HomeQueryShortDesc" style={{marginBottom:'10px'}}><DescriptionOutlinedIcon/>Stats</label>
 
                 <div className="ProfileStatsWrapper">
                     <div className="ProfileStatBox orangeBadge">
